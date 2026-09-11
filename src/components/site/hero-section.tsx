@@ -4,15 +4,26 @@ import eventImage from "@/assets/eon-hero-event.jpg";
 import marketingImage from "@/assets/service-digital-marketing.jpg";
 import prImage from "@/assets/service-pr-communications.jpg";
 import { HeroTabs, HERO_STEPS } from "@/components/site/hero-tabs";
+import { HeroReveal } from "@/components/ui/hero-reveal";
 import { Button } from "@/components/ui/button";
 import gsap from "gsap";
 
-export function HeroSection() {
+export function HeroSection({
+  revealDownRef,
+  revealUpRef,
+}: {
+  revealDownRef?: React.RefObject<HTMLDivElement>;
+  revealUpRef?: React.RefObject<HTMLDivElement>;
+}) {
   const [activeTab, setActiveTab] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const prevIndexRef = useRef(0);
   const containerRef = useRef<HTMLElement>(null);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
+
+  const textRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const imageRefs = useRef<(HTMLImageElement | null)[]>([]);
+  const descRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const headlines = [
     <>
@@ -33,25 +44,26 @@ export function HeroSection() {
 
   // Set initial state on mount
   useEffect(() => {
-    if (!containerRef.current) return;
-    const textEls = containerRef.current.querySelectorAll(".service-text");
-    const imageEls = containerRef.current.querySelectorAll(".service-image");
-    const descEls = containerRef.current.querySelectorAll(".service-desc");
+    const textEls = textRefs.current.filter(Boolean);
+    const imageEls = imageRefs.current.filter(Boolean);
+    const descEls = descRefs.current.filter(Boolean);
 
     if (textEls.length > 0 && imageEls.length > 0 && descEls.length > 0) {
-      gsap.set(textEls[0] as Element, { opacity: 1, y: 0, zIndex: 10, pointerEvents: "auto" });
-      gsap.set(imageEls[0] as Element, { opacity: 1, scale: 1, zIndex: 10, pointerEvents: "auto" });
-      gsap.set(descEls[0] as Element, { opacity: 1, y: 0, zIndex: 10, pointerEvents: "auto" });
+      gsap.set(textEls[0], { opacity: 1, y: 0, zIndex: 10, pointerEvents: "auto" });
+      gsap.set(imageEls[0], { opacity: 1, scale: 1, zIndex: 10, pointerEvents: "auto" });
+      gsap.set(descEls[0], { opacity: 1, y: 0, zIndex: 10, pointerEvents: "auto" });
 
       for (let i = 1; i < textEls.length; i++) {
-        gsap.set(textEls[i] as Element, { opacity: 0, y: 25, zIndex: 0, pointerEvents: "none" });
-        gsap.set(imageEls[i] as Element, {
+        gsap.set(textEls[i], { opacity: 0, y: 25, zIndex: 0, pointerEvents: "none" });
+        gsap.set(imageEls[i], {
           opacity: 0,
           scale: 0.94,
           zIndex: 0,
           pointerEvents: "none",
         });
-        gsap.set(descEls[i] as Element, { opacity: 0, y: 25, zIndex: 0, pointerEvents: "none" });
+        if (descEls[i]) {
+          gsap.set(descEls[i], { opacity: 0, y: 25, zIndex: 0, pointerEvents: "none" });
+        }
       }
     }
   }, []);
@@ -63,26 +75,26 @@ export function HeroSection() {
     prevIndexRef.current = newIndex;
     setActiveTab(newIndex);
 
-    const textEls = containerRef.current?.querySelectorAll(".service-text");
-    const imageEls = containerRef.current?.querySelectorAll(".service-image");
-    const descEls = containerRef.current?.querySelectorAll(".service-desc");
+    const textEls = textRefs.current;
+    const imageEls = imageRefs.current;
+    const descEls = descRefs.current;
 
     if (
-      !textEls ||
-      !imageEls ||
-      !descEls ||
-      textEls.length === 0 ||
-      imageEls.length === 0 ||
-      descEls.length === 0
+      !textEls[oldIndex] ||
+      !textEls[newIndex] ||
+      !imageEls[oldIndex] ||
+      !imageEls[newIndex] ||
+      !descEls[oldIndex] ||
+      !descEls[newIndex]
     )
       return;
 
-    const oldText = textEls[oldIndex] as Element;
-    const newText = textEls[newIndex] as Element;
-    const oldImage = imageEls[oldIndex] as Element;
-    const newImage = imageEls[newIndex] as Element;
-    const oldDesc = descEls[oldIndex] as Element;
-    const newDesc = descEls[newIndex] as Element;
+    const oldText = textEls[oldIndex];
+    const newText = textEls[newIndex];
+    const oldImage = imageEls[oldIndex];
+    const newImage = imageEls[newIndex];
+    const oldDesc = descEls[oldIndex];
+    const newDesc = descEls[newIndex];
 
     if (timelineRef.current) {
       timelineRef.current.kill();
@@ -219,13 +231,17 @@ export function HeroSection() {
     >
       <div className="grid min-h-screen lg:grid-cols-2">
         {/* Left Side - Typography, CTAs, and Interactive Tabs */}
-        <div className="flex flex-col justify-center px-6 sm:px-12 lg:px-16 pt-28 sm:pt-32 pb-12 lg:pt-36 lg:pb-16 z-10">
-          <div className="max-w-2xl flex flex-col">
+        <div className="relative flex flex-col justify-center px-6 sm:px-12 lg:px-16 pt-28 sm:pt-32 pb-12 lg:pt-36 lg:pb-16 z-10 overflow-hidden">
+          <HeroReveal ref={revealDownRef} direction="down" overlayColor="bg-background" />
+          <div className="max-w-2xl flex flex-col relative z-20">
             {/* Headline Container with absolute positioning for GSAP overlapping */}
             <div className="relative min-h-[160px] sm:min-h-[200px] w-full">
               {headlines.map((headline, idx) => (
                 <div
                   key={idx}
+                  ref={(el) => {
+                    textRefs.current[idx] = el;
+                  }}
                   className="service-text absolute inset-0 flex flex-col justify-end opacity-0 pointer-events-none"
                 >
                   <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold uppercase leading-[1.06] tracking-tight text-foreground">
@@ -259,15 +275,19 @@ export function HeroSection() {
 
           {/* Bottom 3-Step Capabilities Tabs */}
           <div className="mt-20 lg:mt-24 relative z-20">
-            <HeroTabs activeTab={activeTab} setActiveTab={goToSlide} />
+            <HeroTabs activeTab={activeTab} setActiveTab={goToSlide} descRefs={descRefs} />
           </div>
         </div>
 
         {/* Right Side - Full-height Image Showcase */}
         <div className="relative min-h-[420px] sm:min-h-[500px] lg:min-h-full w-full overflow-hidden bg-muted">
+          <HeroReveal ref={revealUpRef} direction="up" overlayColor="bg-background" />
           {images.map((img, idx) => (
             <img
               key={idx}
+              ref={(el) => {
+                imageRefs.current[idx] = el;
+              }}
               src={img}
               alt="Corporate keynote and event production showcase"
               width={1920}

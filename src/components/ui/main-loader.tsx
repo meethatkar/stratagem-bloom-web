@@ -1,14 +1,22 @@
 import * as React from "react";
 import { Loader } from "@/components/ui/loader";
 
-export function MainLoaderPage() {
+export const MainLoaderPage = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
   return (
-    <div id="main-loader-page" className="fixed inset-0 z-[100] flex h-[100dvh] w-full flex-col items-center justify-center bg-background px-4 text-center">
+    <div
+      ref={ref}
+      id="main-loader-page"
+      className="fixed inset-0 z-[100] flex h-[100dvh] w-full flex-col items-center justify-center bg-background px-4 text-center"
+      {...props}
+    >
       {/* Loader Graphic Wrapper */}
       <div className="relative mb-12 flex h-24 w-24 items-center justify-center text-accent">
         <Loader />
       </div>
-      
+
       {/* Text Content */}
       <div className="flex flex-col items-center space-y-4 mt-8">
         <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
@@ -20,4 +28,4 @@ export function MainLoaderPage() {
       </div>
     </div>
   );
-}
+});

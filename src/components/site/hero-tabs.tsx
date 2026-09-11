@@ -34,9 +34,11 @@ export const HERO_STEPS: HeroStep[] = [
 export function HeroTabs({
   activeTab,
   setActiveTab,
+  descRefs,
 }: {
   activeTab: number;
   setActiveTab: (index: number) => void;
+  descRefs?: React.MutableRefObject<(HTMLDivElement | null)[]>;
 }) {
   return (
     <div className="w-full pt-8">
@@ -85,6 +87,9 @@ export function HeroTabs({
         {HERO_STEPS.map((step, idx) => (
           <div
             key={step.id}
+            ref={(el) => {
+              if (descRefs) descRefs.current[idx] = el;
+            }}
             className="service-desc absolute inset-0 opacity-0 pointer-events-none"
           >
             <p className="text-sm sm:text-base leading-relaxed text-muted-foreground max-w-xl">

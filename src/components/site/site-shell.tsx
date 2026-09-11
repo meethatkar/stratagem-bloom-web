@@ -6,6 +6,23 @@ import { Button } from "@/components/ui/button";
 import { Logo, type LogoSize } from "@/components/ui/logo";
 import { serviceMenu } from "@/content/site-data";
 
+type NavLinkType = {
+  label: string;
+  href?: string;
+  to?: string;
+  isDropdown?: boolean;
+  desktopOnly?: boolean;
+  mobileClassName?: string;
+};
+
+const NAV_LINKS: NavLinkType[] = [
+  { label: "HOME", to: "/", desktopOnly: true },
+  { label: "ABOUT US", to: "/about" },
+  { label: "SERVICES", href: "/#services", isDropdown: true },
+  { label: "REAL ESTATE SOLUTIONS", href: "/#real-estate", mobileClassName: "text-accent-strong" },
+  { label: "CONTACT US", href: "/#inquiry" },
+];
+
 export function Brand({
   inverse = false,
   size = "sm",
@@ -24,7 +41,7 @@ function NavDropdown({ inverse }: { inverse: boolean }) {
   return (
     <div className="group relative">
       <button
-        className="nav-link text-sm font-medium text-foreground hover:text-foreground/70 inline-flex items-center gap-1.5 py-7 uppercase"
+        className="nav-link text-sm font-medium text-current hover:opacity-70 inline-flex items-center gap-1.5 py-7 uppercase"
         aria-haspopup="true"
       >
         SERVICES{" "}
@@ -50,7 +67,7 @@ function NavDropdown({ inverse }: { inverse: boolean }) {
   );
 }
 
-export function SiteHeader() {
+export function SiteHeader({ theme = "dark" }: { theme?: "light" | "dark" }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -66,39 +83,31 @@ export function SiteHeader() {
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
           ? "border-b border-border bg-background/95 text-foreground shadow-sm backdrop-blur-xl py-0"
-          : "bg-transparent text-foreground py-2"
+          : `bg-transparent ${theme === "light" ? "text-foreground" : "text-white"} py-2`
       }`}
     >
       <div className="w-full px-6 sm:px-12 lg:px-16 flex h-20 items-center justify-between lg:h-24">
         {/* Left Side: Brand and Nav Links */}
         <div className="flex items-center gap-10">
-          <Brand size="sm" />
+          <Brand size="md" inverse={theme === "dark"} />
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
-            <Link
-              className="nav-link text-sm font-medium text-foreground hover:text-foreground/70 uppercase"
-              to="/"
-            >
-              HOME
-            </Link>
-            <Link
-              className="nav-link text-sm font-medium text-foreground hover:text-foreground/70 uppercase"
-              to="/about"
-            >
-              ABOUT US
-            </Link>
-            <NavDropdown inverse={false} />
-            <a
-              className="nav-link text-sm font-medium text-foreground hover:text-foreground/70 uppercase"
-              href="/#real-estate"
-            >
-              REAL ESTATE SOLUTIONS
-            </a>
-            <a
-              className="nav-link text-sm font-medium text-foreground hover:text-foreground/70 uppercase"
-              href="/#inquiry"
-            >
-              CONTACT US
-            </a>
+            {NAV_LINKS.filter((link) => !link.mobileOnly).map((link) => {
+              if (link.isDropdown)
+                return <NavDropdown key="dropdown" inverse={theme === "dark" && !scrolled} />;
+
+              const Component = link.to ? Link : "a";
+              const props = link.to ? { to: link.to } : { href: link.href };
+
+              return (
+                <Component
+                  key={link.label}
+                  className="nav-link text-sm font-medium text-current hover:opacity-70 uppercase"
+                  {...(props as Record<string, unknown>)}
+                >
+                  {link.label}
+                </Component>
+              );
+            })}
           </nav>
         </div>
 
@@ -108,7 +117,7 @@ export function SiteHeader() {
             variant="outline"
             size="lg"
             className={`font-medium rounded-none px-6 transition-all text-xs tracking-widest uppercase ${
-              scrolled
+              scrolled || theme === "light"
                 ? "border-foreground text-foreground hover:bg-foreground hover:text-background"
                 : "border-white text-white bg-black/20 backdrop-blur-sm hover:bg-white hover:text-black"
             }`}
@@ -139,22 +148,21 @@ export function SiteHeader() {
           aria-label="Mobile navigation"
         >
           <div className="flex flex-col gap-3">
-            <Link onClick={() => setOpen(false)} className="mobile-nav-link" to="/about">
-              About Us
-            </Link>
-            <a onClick={() => setOpen(false)} className="mobile-nav-link" href="/#services">
-              Services
-            </a>
-            <a
-              onClick={() => setOpen(false)}
-              className="mobile-nav-link text-accent-strong"
-              href="/#real-estate"
-            >
-              Real Estate Solutions
-            </a>
-            <a onClick={() => setOpen(false)} className="mobile-nav-link" href="/#inquiry">
-              Contact Us
-            </a>
+            {NAV_LINKS.filter((link) => !link.desktopOnly).map((link) => {
+              const Component = link.to ? Link : "a";
+              const props = link.to ? { to: link.to } : { href: link.href };
+
+              return (
+                <Component
+                  key={link.label}
+                  onClick={() => setOpen(false)}
+                  className={`mobile-nav-link ${link.mobileClassName || ""}`}
+                  {...(props as Record<string, unknown>)}
+                >
+                  {link.label}
+                </Component>
+              );
+            })}
             <Button asChild variant="premium" size="lg" className="mt-5 w-full">
               <a onClick={() => setOpen(false)} href="/#inquiry">
                 Request a Quote <ArrowRight />
@@ -178,6 +186,21 @@ export function SiteFooter() {
               Strategic thinking, creative distinction and precise execution—from Bangalore to
               markets across India.
             </p>
+            <div className="mt-8 flex gap-3">
+              <a className="social-link" href="#" aria-label="LinkedIn">
+                <Linkedin />
+              </a>
+              <a className="social-link" href="#" aria-label="Instagram">
+                <Instagram />
+              </a>
+              <a
+                className="social-link"
+                href="mailto:sales@eonmedia.co.in"
+                aria-label="Email Eon Media"
+              >
+                <MoveUpRight />
+              </a>
+            </div>
           </div>
           <div>
             <h2 className="footer-title">Navigate</h2>
@@ -235,21 +258,6 @@ export function SiteFooter() {
         </div>
         <div className="flex flex-col gap-5 pt-8 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 Eon Media. All rights reserved.</p>
-          <div className="flex gap-3">
-            <a className="social-link" href="#" aria-label="LinkedIn">
-              <Linkedin />
-            </a>
-            <a className="social-link" href="#" aria-label="Instagram">
-              <Instagram />
-            </a>
-            <a
-              className="social-link"
-              href="mailto:sales@eonmedia.co.in"
-              aria-label="Email Eon Media"
-            >
-              <MoveUpRight />
-            </a>
-          </div>
         </div>
       </div>
     </footer>

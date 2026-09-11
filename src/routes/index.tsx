@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowDown, ArrowRight, Crosshair, MoveUpRight } from "lucide-react";
+import { ArrowRight, Crosshair, MoveUpRight } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { Reveal } from "@/components/site/reveal";
@@ -12,7 +12,7 @@ import { SiteFooter, SiteHeader } from "@/components/site/site-shell";
 import { Button } from "@/components/ui/button";
 import { MainLoaderPage } from "@/components/ui/main-loader";
 import { capabilities, proofPoints, serviceOverview } from "@/content/site-data";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
 
 export const Route = createFileRoute("/")({
@@ -62,30 +62,61 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [showLoader, setShowLoader] = useState(true);
+  const loaderRef = useRef<HTMLDivElement>(null);
+  const revealDownRef = useRef<HTMLDivElement>(null);
+  const revealUpRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Wait for initial paint
-    const timer = setTimeout(() => {
-      gsap.to("#main-loader-page", {
-        x: "-100%",
-        opacity: 0,
-        duration: 0.8,
-        ease: "power3.inOut",
-        onComplete: () => {
-          setShowLoader(false);
-        },
-      });
-    }, 500); // Small delay to let user see the loader
+    let ctx = gsap.context(() => {
+      // Wait for initial paint
+      const timer = setTimeout(() => {
+        const tl = gsap.timeline({
+          onComplete: () => {
+            setShowLoader(false);
+          },
+        });
 
-    return () => clearTimeout(timer);
+        tl.to(loaderRef.current, {
+          y: "-100%",
+          duration: 0.8,
+          ease: "power3.inOut",
+        });
+
+        tl.to(
+          revealDownRef.current,
+          {
+            y: "100%",
+            // opacity: 0,
+            duration: 0.8,
+            ease: "sine.inOut",
+          },
+          "-=0.5",
+        );
+
+        tl.to(
+          revealUpRef.current,
+          {
+            y: "-100%",
+            // opacity: 0,
+            duration: 0.8,
+            ease: "sine.inOut",
+          },
+          "<",
+        );
+      }, 500); // Small delay to let user see the loader
+
+      return () => clearTimeout(timer);
+    });
+
+    return () => ctx.revert();
   }, []);
 
   return (
     <>
-      {showLoader && <MainLoaderPage />}
-      <SiteHeader />
+      {showLoader && <MainLoaderPage ref={loaderRef} />}
+      <SiteHeader theme="light" />
       <main>
-        <HeroSection />
+        <HeroSection revealDownRef={revealDownRef} revealUpRef={revealUpRef} />
 
         <section id="about" className="section-space bg-background">
           <div className="site-container">
@@ -243,7 +274,7 @@ function Index() {
               </div>
             </Reveal>
             <Reveal>
-              <div className="mt-16 grid border-y border-border sm:grid-cols-2 lg:mt-24 lg:grid-cols-4">
+              <div className="mt-16 grid border-y border-l border-border sm:grid-cols-2 lg:mt-24 lg:grid-cols-4">
                 {proofPoints.map((point) => (
                   <div key={point.value} className="proof-point">
                     <strong>{point.value}</strong>

@@ -8,16 +8,16 @@ Create a sophisticated corporate website that positions Eon Media as a premium s
 
 The website should communicate:
 
-* Corporate credibility
-* Premium event production
-* Strategic marketing
-* Public relations and communications
-* Creative branding
-* Digital marketing
-* Real estate marketing and activations
-* Business advisory
-* Strong execution capability
-* Client-focused ROI
+- Corporate credibility
+- Premium event production
+- Strategic marketing
+- Public relations and communications
+- Creative branding
+- Digital marketing
+- Real estate marketing and activations
+- Business advisory
+- Strong execution capability
+- Client-focused ROI
 
 The visual language should feel **premium, editorial, modern, confident and highly polished**.
 
@@ -25,14 +25,14 @@ Avoid generic SaaS layouts, generic startup templates, excessive rounded cards, 
 
 The website should feel suitable for:
 
-* Large corporate clients
-* Real estate developers
-* Infrastructure companies
-* Brand teams
-* Marketing heads
-* CXOs
-* Investors
-* Corporate decision makers
+- Large corporate clients
+- Real estate developers
+- Infrastructure companies
+- Brand teams
+- Marketing heads
+- CXOs
+- Investors
+- Corporate decision makers
 
 ---
 
@@ -42,34 +42,34 @@ Use a modern React-based architecture.
 
 Preferred stack:
 
-* React
-* TypeScript
-* Tailwind CSS
-* Modern component-based architecture
-* Responsive design
-* Optimized images
-* Semantic HTML
-* SEO-friendly routing
+- React
+- TypeScript
+- Tailwind CSS
+- Modern component-based architecture
+- Responsive design
+- Optimized images
+- Semantic HTML
+- SEO-friendly routing
 
 Structure the application around reusable components.
 
 Create reusable components for:
 
-* Header
-* Navigation
-* Dropdown menus
-* CTA buttons
-* Section headings
-* Service cards
-* Image/media blocks
-* Statistics/metrics
-* Testimonials if required later
-* Forms
-* Footer
-* Breadcrumbs
-* Page hero sections
-* Service detail layouts
-* Real-estate detail layouts
+- Header
+- Navigation
+- Dropdown menus
+- CTA buttons
+- Section headings
+- Service cards
+- Image/media blocks
+- Statistics/metrics
+- Testimonials if required later
+- Forms
+- Footer
+- Breadcrumbs
+- Page hero sections
+- Service detail layouts
+- Real-estate detail layouts
 
 IMPORTANT:
 
@@ -85,13 +85,13 @@ Create a premium responsive header.
 
 Navigation:
 
-* Logo
-* Home
-* About Us
-* Services
-* Real Estate Solutions
-* Contact Us
-* Request a Quote
+- Logo
+- Home
+- About Us
+- Services
+- Real Estate Solutions
+- Contact Us
+- Request a Quote
 
 Services should have a dropdown/mega-menu containing:
 
@@ -107,12 +107,12 @@ The **Request a Quote** button should be visually prominent.
 
 Header behavior:
 
-* Transparent/overlay version on suitable hero sections
-* Transition to solid background when scrolling
-* Smooth navigation
-* Mobile menu
-* Accessible keyboard navigation
-* Clear hover/focus states
+- Transparent/overlay version on suitable hero sections
+- Transition to solid background when scrolling
+- Smooth navigation
+- Mobile menu
+- Accessible keyboard navigation
+- Clear hover/focus states
 
 ---
 
@@ -122,27 +122,27 @@ Create a premium corporate visual identity.
 
 Design characteristics:
 
-* Strong typography
-* Large editorial headlines
-* Generous whitespace
-* Sophisticated grid system
-* High-quality photography
-* Strong visual hierarchy
-* Subtle motion
-* Smooth transitions
-* Premium image cropping
-* Clean iconography
-* Minimal but intentional borders
-* Strong CTA treatment
+- Strong typography
+- Large editorial headlines
+- Generous whitespace
+- Sophisticated grid system
+- High-quality photography
+- Strong visual hierarchy
+- Subtle motion
+- Smooth transitions
+- Premium image cropping
+- Clean iconography
+- Minimal but intentional borders
+- Strong CTA treatment
 
 Use a restrained professional color system.
 
 Suggested direction:
 
-* Deep charcoal / near-black
-* Warm white / off-white
-* Neutral greys
-* One sophisticated accent color
+- Deep charcoal / near-black
+- Warm white / off-white
+- Neutral greys
+- One sophisticated accent color
 
 Do not overuse gradients.
 
@@ -160,15 +160,15 @@ Use motion intentionally.
 
 Animations should include:
 
-* Hero text reveal
-* Image reveal
-* Subtle image scale/parallax
-* Scroll-triggered section reveals
-* Card hover interactions
-* Number/stat animations
-* Smooth transitions
-* Navigation transitions
-* CTA hover effects
+- Hero text reveal
+- Image reveal
+- Subtle image scale/parallax
+- Scroll-triggered section reveals
+- Card hover interactions
+- Number/stat animations
+- Smooth transitions
+- Navigation transitions
+- CTA hover effects
 
 Motion must remain professional and performant.
 
@@ -218,11 +218,11 @@ Create an editorial section explaining Eon Media's integrated capabilities.
 
 Position the company as an end-to-end partner across:
 
-* Live Experiences
-* Brand & Creative
-* Strategic Marketing
-* Corporate Communications
-* Business Advisory
+- Live Experiences
+- Brand & Creative
+- Strategic Marketing
+- Corporate Communications
+- Business Advisory
 
 Use an interesting visual composition rather than five generic cards.
 
@@ -264,12 +264,12 @@ Create a dedicated premium section positioning Eon Media's real estate expertise
 
 Focus on:
 
-* Property launches
-* Pre-launch activations
-* Channel partner meets
-* Investor showcases
-* Property expos
-* Immersive experience centers
+- Property launches
+- Pre-launch activations
+- Channel partner meets
+- Investor showcases
+- Property expos
+- Immersive experience centers
 
 Use large imagery and strong editorial typography.
 
@@ -291,11 +291,11 @@ Use placeholder values where exact company statistics have not yet been supplied
 
 Possible categories:
 
-* Events & Activations
-* Corporate Clients
-* Cities / Markets
-* Production Capability
-* Strategic Expertise
+- Events & Activations
+- Corporate Clients
+- Cities / Markets
+- Production Capability
+- Strategic Expertise
 
 Do NOT invent fake numerical claims as final content.
 
@@ -303,12 +303,12 @@ Use clearly editable placeholder data.
 
 Also communicate:
 
-* Operational excellence
-* Production precision
-* Creative distinction
-* Strategic thinking
-* Client ROI
-* End-to-end execution
+- Operational excellence
+- Production precision
+- Creative distinction
+- Strategic thinking
+- Client ROI
+- End-to-end execution
 
 ---
 
@@ -318,11 +318,11 @@ Create a prominent lead-generation section.
 
 Fields:
 
-* Name
-* Work Email
-* Phone
-* Service Required
-* Message
+- Name
+- Work Email
+- Phone
+- Service Required
+- Message
 
 CTA:
 
@@ -344,11 +344,11 @@ Include:
 
 ### Navigation
 
-* Home
-* About Us
-* Services
-* Real Estate Solutions
-* Contact Us
+- Home
+- About Us
+- Services
+- Real Estate Solutions
+- Contact Us
 
 ### Contact
 
@@ -369,9 +369,9 @@ Karnataka – 560038
 
 ### Other
 
-* Social media icons
-* Newsletter signup
-* Copyright notice
+- Social media icons
+- Newsletter signup
+- Copyright notice
 
 ---
 
@@ -379,29 +379,29 @@ Karnataka – 560038
 
 Set up the website architecture so every page can later have unique:
 
-* Page title
-* Meta description
-* Open Graph metadata
-* Canonical URL
-* Structured data
+- Page title
+- Meta description
+- Open Graph metadata
+- Canonical URL
+- Structured data
 
 The company should be positioned around relevant searches such as:
 
-* Event management company Bangalore
-* Corporate event management Bangalore
-* Corporate communications Bangalore
-* Marketing agency Bangalore
-* Event production company India
-* Real estate event marketing
-* Property launch event management
+- Event management company Bangalore
+- Corporate event management Bangalore
+- Corporate communications Bangalore
+- Marketing agency Bangalore
+- Event production company India
+- Real estate event marketing
+- Property launch event management
 
 Do not keyword-stuff.
 
 Prepare the architecture for:
 
-* Organization schema
-* LocalBusiness schema
-* Breadcrumb schema where appropriate
+- Organization schema
+- LocalBusiness schema
+- Breadcrumb schema where appropriate
 
 ---
 
@@ -409,10 +409,10 @@ Prepare the architecture for:
 
 The website must work exceptionally well on:
 
-* Mobile
-* Tablet
-* Laptop
-* Large desktop
+- Mobile
+- Tablet
+- Laptop
+- Large desktop
 
 Do not simply shrink the desktop design.
 
@@ -420,15 +420,15 @@ Create intentional responsive layouts.
 
 Pay special attention to:
 
-* Navigation
-* Hero typography
-* Image crops
-* Section spacing
-* Forms
-* Grid layouts
-* CTA buttons
-* Footer
-* Touch interactions
+- Navigation
+- Hero typography
+- Image crops
+- Section spacing
+- Forms
+- Grid layouts
+- CTA buttons
+- Footer
+- Touch interactions
 
 ---
 
@@ -436,14 +436,14 @@ Pay special attention to:
 
 Prioritize:
 
-* Fast initial load
-* Optimized image loading
-* Lazy loading below-the-fold media
-* Minimal unnecessary JavaScript
-* Semantic HTML
-* Good Core Web Vitals
-* Avoid heavy animations on mobile
-* Avoid unnecessarily large assets
+- Fast initial load
+- Optimized image loading
+- Lazy loading below-the-fold media
+- Minimal unnecessary JavaScript
+- Semantic HTML
+- Good Core Web Vitals
+- Avoid heavy animations on mobile
+- Avoid unnecessarily large assets
 
 Target a highly optimized production-ready experience.
 
@@ -455,19 +455,18 @@ The website must NOT look like a collection of disconnected templates.
 
 Establish a consistent visual system that will later extend to:
 
-* About page
-* Services page
-* Individual Service pages
-* Real Estate Solutions page
-* Individual Real Estate pages
-* Contact page
+- About page
+- Services page
+- Individual Service pages
+- Real Estate Solutions page
+- Individual Real Estate pages
+- Contact page
 
 The Home page should establish the visual language for the entire website.
 
 Build the **Home page + global Header + Footer + reusable component foundation first**.
 
 Do not build all other pages yet.
-
 
 Service pages and Real Estate pages must use reusable components/templates, not duplicated page code.
 
