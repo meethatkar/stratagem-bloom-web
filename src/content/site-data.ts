@@ -63,3 +63,38 @@ export const serviceMenu = [
   "Advertising & Digital Marketing",
   "Management Consultancy & Advisory",
 ];
+
+export const companyProfile = {
+  headline: "An integrated partner for organisations that expect more from every engagement.",
+  body: [
+    "Eon Media was built around a simple conviction: that events, communications, brand and marketing should not operate in isolation. When they are planned, produced and measured as one connected system, the result is sharper positioning, stronger audience impact and clearer commercial return.",
+    "We work with enterprises, real estate developers, associations and growth-stage businesses across India. Our teams span strategy, creative, production, media, digital and advisory—brought together under one accountable partner from first thought to final impact.",
+  ],
+  capabilities: [
+    { title: "Event Management", description: "End-to-end design, logistics and production for conventions, launches, exhibitions and corporate forums." },
+    { title: "Event Production", description: "Stage, audio-visual, lighting, content and show direction that elevates live experiences." },
+    { title: "Public Relations", description: "Reputation strategy, media engagement, crisis preparedness and stakeholder narratives." },
+    { title: "Corporate Communications", description: "Internal and external messaging, leadership content, investor communications and ESG storytelling." },
+    { title: "Visual Branding", description: "Identity systems, campaign creative, environmental branding and content design." },
+    { title: "Digital Marketing", description: "Performance campaigns, content engines, social strategy and conversion-focused creative." },
+    { title: "Business Growth Advisory", description: "Go-to-market planning, partnership strategy, channel programmes and market entry counsel." },
+  ],
+};
+
+export const leadership = {
+  name: "Rajiv Kumar",
+  role: "Chief Executive Officer",
+  message:
+    "Our ambition is to be the partner clients call when the stakes are high and the outcome must be certain. That means combining strategic clarity with operational precision, creative courage with disciplined execution, and a relentless focus on the business results our clients need to achieve.",
+  themes: ["Vision", "Execution Precision", "Client-First Strategy", "Operational Excellence", "Business Outcomes"],
+};
+
+export const missionValues = {
+  headline: "Built on discipline. Driven by impact.",
+  values: [
+    { title: "Operational Excellence", description: "Every process, partner and timeline is managed to remove friction and protect quality." },
+    { title: "Seamless Production", description: "We design experiences where the audience sees only the idea, never the complexity behind it." },
+    { title: "Creative Distinction", description: "Work that is recognisably better—clearer, more beautiful and more memorable." },
+    { title: "Client ROI", description: "Creativity and production must ultimately return measurable business value." },
+  ],
+};

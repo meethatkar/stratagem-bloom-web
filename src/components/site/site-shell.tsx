@@ -52,11 +52,11 @@ export function SiteHeader() {
       <div className="site-container flex h-20 items-center justify-between lg:h-24">
         <Brand inverse={inverse} />
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
-          <a className="nav-link" href="#about">About Us</a>
+          <Link className="nav-link" to="/about">About Us</Link>
           <NavDropdown inverse={inverse} />
-          <a className="nav-link real-estate-nav" href="#real-estate">Real Estate Solutions</a>
-          <a className="nav-link" href="#inquiry">Contact Us</a>
-          <Button asChild variant={inverse ? "hero" : "premium"} size="lg"><a href="#inquiry">Request a Quote <ArrowRight /></a></Button>
+          <a className="nav-link real-estate-nav" href="/#real-estate">Real Estate Solutions</a>
+          <a className="nav-link" href="/#inquiry">Contact Us</a>
+          <Button asChild variant={inverse ? "hero" : "premium"} size="lg"><a href="/#inquiry">Request a Quote <ArrowRight /></a></Button>
         </nav>
         <Button variant="ghost" size="icon" className="lg:hidden" aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open} onClick={() => setOpen(!open)}>
           {open ? <X /> : <Menu />}
@@ -65,11 +65,11 @@ export function SiteHeader() {
       {open && (
         <nav className="border-t border-border bg-background px-6 pb-8 pt-4 text-foreground lg:hidden" aria-label="Mobile navigation">
           <div className="flex flex-col">
-            <a onClick={() => setOpen(false)} className="mobile-nav-link" href="#about">About Us</a>
-            <a onClick={() => setOpen(false)} className="mobile-nav-link" href="#services">Services</a>
-            <a onClick={() => setOpen(false)} className="mobile-nav-link text-accent-strong" href="#real-estate">Real Estate Solutions</a>
-            <a onClick={() => setOpen(false)} className="mobile-nav-link" href="#inquiry">Contact Us</a>
-            <Button asChild variant="premium" size="lg" className="mt-5 w-full"><a onClick={() => setOpen(false)} href="#inquiry">Request a Quote <ArrowRight /></a></Button>
+            <Link onClick={() => setOpen(false)} className="mobile-nav-link" to="/about">About Us</Link>
+            <a onClick={() => setOpen(false)} className="mobile-nav-link" href="/#services">Services</a>
+            <a onClick={() => setOpen(false)} className="mobile-nav-link text-accent-strong" href="/#real-estate">Real Estate Solutions</a>
+            <a onClick={() => setOpen(false)} className="mobile-nav-link" href="/#inquiry">Contact Us</a>
+            <Button asChild variant="premium" size="lg" className="mt-5 w-full"><a onClick={() => setOpen(false)} href="/#inquiry">Request a Quote <ArrowRight /></a></Button>
           </div>
         </nav>
       )}
@@ -83,7 +83,7 @@ export function SiteFooter() {
       <div className="site-container py-16 lg:py-24">
         <div className="grid gap-12 border-b border-ink-foreground/15 pb-16 md:grid-cols-2 lg:grid-cols-[1.25fr_.75fr_1fr_1.25fr]">
           <div><Brand inverse /><p className="mt-6 max-w-xs text-sm leading-7 text-ink-muted">Strategic thinking, creative distinction and precise execution—from Bangalore to markets across India.</p></div>
-          <div><h2 className="footer-title">Navigate</h2><div className="footer-links"><a href="#about">About Us</a><a href="#services">Services</a><a href="#real-estate">Real Estate</a><a href="#inquiry">Contact Us</a></div></div>
+          <div><h2 className="footer-title">Navigate</h2><div className="footer-links"><Link to="/about">About Us</Link><a href="/#services">Services</a><a href="/#real-estate">Real Estate</a><a href="/#inquiry">Contact Us</a></div></div>
           <div><h2 className="footer-title">Contact</h2><div className="footer-links"><a href="mailto:sales@eonmedia.co.in">sales@eonmedia.co.in</a><a href="mailto:marketing@eonmedia.co.in">marketing@eonmedia.co.in</a><a href="tel:+918433857555">+91 84338 57555</a></div></div>
           <div><h2 className="footer-title">Bangalore</h2><address className="not-italic text-sm leading-7 text-ink-muted">No. 235 Binnamangala, 2nd Stage ProWork,<br />Indiranagar, Bangalore North,<br />Karnataka – 560038</address></div>
         </div>
