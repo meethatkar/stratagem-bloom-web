@@ -1,6 +1,8 @@
 import { useEffect, useRef, type ReactNode } from "react";
 
-export function Reveal({ children }: { children: ReactNode }) {
+import { cn } from "@/lib/utils";
+
+export function Reveal({ children, className }: { children: ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const node = ref.current;
@@ -18,5 +20,5 @@ export function Reveal({ children }: { children: ReactNode }) {
     observer.observe(node);
     return () => observer.disconnect();
   }, []);
-  return <div ref={ref} className="reveal">{children}</div>;
+  return <div ref={ref} className={cn("reveal", className)}>{children}</div>;
 }

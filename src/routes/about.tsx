@@ -136,16 +136,14 @@ function AboutPage() {
                 const span = index === 0 || index === 3 ? "lg:col-span-7" : "lg:col-span-5";
                 const isLarge = index === 0 || index === 3;
                 return (
-                  <Reveal key={value.title}>
-                    <div className={`h-full bg-ink p-6 ${span} lg:p-10`}>
-                      <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">
-                        0{index + 1}
-                      </span>
-                      <h3 className={`mt-6 font-display ${isLarge ? "text-3xl lg:text-4xl" : "text-2xl"}`}>
-                        {value.title}
-                      </h3>
-                      <p className="mt-4 max-w-md text-sm leading-6 text-ink-muted">{value.description}</p>
-                    </div>
+                  <Reveal key={value.title} className={`bg-ink p-6 ${span} lg:p-10`}>
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">
+                      0{index + 1}
+                    </span>
+                    <h3 className={`mt-6 font-display ${isLarge ? "text-3xl lg:text-4xl" : "text-2xl"}`}>
+                      {value.title}
+                    </h3>
+                    <p className="mt-4 max-w-md text-sm leading-6 text-ink-muted">{value.description}</p>
                   </Reveal>
                 );
               })}
