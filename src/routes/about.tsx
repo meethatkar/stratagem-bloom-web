@@ -162,9 +162,9 @@ function AboutPage() {
                   </h2>
                 </div>
                 <Button asChild variant="premium" size="xl">
-                  <Link to="/#inquiry">
+                  <a href="/#inquiry">
                     Request a Quote <ArrowRight />
-                  </Link>
+                  </a>
                 </Button>
               </div>
             </Reveal>
