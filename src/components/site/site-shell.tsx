@@ -3,26 +3,38 @@ import { ArrowRight, ChevronDown, Instagram, Linkedin, Menu, MoveUpRight, X } fr
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { Logo, type LogoSize } from "@/components/ui/logo";
 import { serviceMenu } from "@/content/site-data";
 
-export function Brand({ inverse = false }: { inverse?: boolean }) {
+export function Brand({
+  inverse = false,
+  size = "sm",
+  variant,
+  className = "",
+}: {
+  inverse?: boolean;
+  size?: LogoSize;
+  variant?: LogoSize;
+  className?: string;
+}) {
   return (
-    <Link to="/" className="group inline-flex items-center gap-3" aria-label="Eon Media home">
-      <span className={`grid size-9 place-items-center border ${inverse ? "border-hero-foreground/55" : "border-foreground/35"}`}>
-        <span className="font-display text-xl leading-none">E</span>
-      </span>
-      <span className="font-display text-xl uppercase leading-none tracking-[0.18em]">Eon Media</span>
-    </Link>
+    <Logo
+      size={size || variant}
+      inverse={inverse}
+      asLink
+      href="/"
+      className={className}
+    />
   );
 }
 
 function NavDropdown({ inverse }: { inverse: boolean }) {
   return (
     <div className="group relative">
-      <button className="nav-link inline-flex items-center gap-1.5 py-7" aria-haspopup="true">
-        Services <ChevronDown className="size-3.5 transition-transform group-hover:rotate-180 group-focus-within:rotate-180" />
+      <button className="nav-link text-sm font-medium text-foreground hover:text-foreground/70 inline-flex items-center gap-1.5 py-7 uppercase" aria-haspopup="true">
+        SERVICES <ChevronDown className="size-3.5 transition-transform group-hover:rotate-180 group-focus-within:rotate-180" />
       </button>
-      <div className="invisible absolute left-1/2 top-full w-[410px] -translate-x-1/2 translate-y-2 border border-border bg-background p-3 text-foreground opacity-0 shadow-2xl transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+      <div className="invisible absolute left-1/2 top-full w-[410px] -translate-x-1/2 translate-y-2 border border-border bg-background p-3 text-foreground opacity-0 shadow-2xl transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 z-50">
         <p className="border-b border-border px-3 pb-3 pt-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">Integrated Capabilities</p>
         {serviceMenu.map((item, index) => (
           <a key={item} href="#services" className="flex items-center justify-between border-b border-border/70 px-3 py-3 text-sm transition-colors last:border-none hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none">
@@ -46,25 +58,69 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const inverse = !scrolled && !open;
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-500 ${inverse ? "border-hero-foreground/20 bg-transparent text-hero-foreground" : "border-border bg-background/95 text-foreground shadow-sm backdrop-blur-xl"}`}>
-      <div className="site-container flex h-20 items-center justify-between lg:h-24">
-        <Brand inverse={inverse} />
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
-          <Link className="nav-link" to="/about">About Us</Link>
-          <NavDropdown inverse={inverse} />
-          <a className="nav-link real-estate-nav" href="/#real-estate">Real Estate Solutions</a>
-          <a className="nav-link" href="/#inquiry">Contact Us</a>
-          <Button asChild variant={inverse ? "hero" : "premium"} size="lg"><a href="/#inquiry">Request a Quote <ArrowRight /></a></Button>
-        </nav>
-        <Button variant="ghost" size="icon" className="lg:hidden" aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open} onClick={() => setOpen(!open)}>
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "border-b border-border bg-background/95 text-foreground shadow-sm backdrop-blur-xl py-0"
+          : "bg-transparent text-foreground py-2"
+      }`}
+    >
+      <div className="w-full px-6 sm:px-12 lg:px-16 flex h-20 items-center justify-between lg:h-24">
+        {/* Left Side: Brand and Nav Links */}
+        <div className="flex items-center gap-10">
+          <Brand size="sm" />
+          <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
+            <Link className="nav-link text-sm font-medium text-foreground hover:text-foreground/70 uppercase" to="/">
+              HOME
+            </Link>
+            <Link className="nav-link text-sm font-medium text-foreground hover:text-foreground/70 uppercase" to="/about">
+              ABOUT US
+            </Link>
+            <NavDropdown inverse={false} />
+            <a className="nav-link text-sm font-medium text-foreground hover:text-foreground/70 uppercase" href="/#real-estate">
+              REAL ESTATE SOLUTIONS
+            </a>
+            <a className="nav-link text-sm font-medium text-foreground hover:text-foreground/70 uppercase" href="/#inquiry">
+              CONTACT US
+            </a>
+          </nav>
+        </div>
+
+        <div className="hidden items-center gap-6 lg:flex">
+          <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className={`font-medium rounded-none px-6 transition-all text-xs tracking-widest uppercase ${
+              scrolled
+                ? "border-foreground text-foreground hover:bg-foreground hover:text-background"
+                : "border-white text-white bg-black/20 backdrop-blur-sm hover:bg-white hover:text-black"
+            }`}
+          >
+            <a href="/#inquiry" className="inline-flex items-center">
+              REQUEST A QUOTE <ArrowRight className="size-4 ml-2" />
+            </a>
+          </Button>
+        </div>
+
+        {/* Mobile Hamburger Toggle */}
+        <Button
+          variant="ghost"
+          size="icon"
+          className="lg:hidden"
+          aria-label={open ? "Close navigation" : "Open navigation"}
+          aria-expanded={open}
+          onClick={() => setOpen(!open)}
+        >
           {open ? <X /> : <Menu />}
         </Button>
       </div>
+
+      {/* Mobile Drawer Menu */}
       {open && (
         <nav className="border-t border-border bg-background px-6 pb-8 pt-4 text-foreground lg:hidden" aria-label="Mobile navigation">
-          <div className="flex flex-col">
+          <div className="flex flex-col gap-3">
             <Link onClick={() => setOpen(false)} className="mobile-nav-link" to="/about">About Us</Link>
             <a onClick={() => setOpen(false)} className="mobile-nav-link" href="/#services">Services</a>
             <a onClick={() => setOpen(false)} className="mobile-nav-link text-accent-strong" href="/#real-estate">Real Estate Solutions</a>
@@ -82,7 +138,7 @@ export function SiteFooter() {
     <footer className="bg-ink text-ink-foreground">
       <div className="site-container py-16 lg:py-24">
         <div className="grid gap-12 border-b border-ink-foreground/15 pb-16 md:grid-cols-2 lg:grid-cols-[1.25fr_.75fr_1fr_1.25fr]">
-          <div><Brand inverse /><p className="mt-6 max-w-xs text-sm leading-7 text-ink-muted">Strategic thinking, creative distinction and precise execution—from Bangalore to markets across India.</p></div>
+          <div><Brand inverse size="md" /><p className="mt-6 max-w-xs text-sm leading-7 text-ink-muted">Strategic thinking, creative distinction and precise execution—from Bangalore to markets across India.</p></div>
           <div><h2 className="footer-title">Navigate</h2><div className="footer-links"><Link to="/about">About Us</Link><a href="/#services">Services</a><a href="/#real-estate">Real Estate</a><a href="/#inquiry">Contact Us</a></div></div>
           <div><h2 className="footer-title">Contact</h2><div className="footer-links"><a href="mailto:sales@eonmedia.co.in">sales@eonmedia.co.in</a><a href="mailto:marketing@eonmedia.co.in">marketing@eonmedia.co.in</a><a href="tel:+918433857555">+91 84338 57555</a></div></div>
           <div><h2 className="footer-title">Bangalore</h2><address className="not-italic text-sm leading-7 text-ink-muted">No. 235 Binnamangala, 2nd Stage ProWork,<br />Indiranagar, Bangalore North,<br />Karnataka – 560038</address></div>

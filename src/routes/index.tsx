@@ -4,9 +4,9 @@ import type { ReactNode } from "react";
 
 import { Reveal } from "@/components/site/reveal";
 
-import heroImage from "@/assets/eon-hero-event.jpg";
 import productionImage from "@/assets/eon-production-detail.jpg";
 import realEstateImage from "@/assets/eon-real-estate.jpg";
+import { HeroSection } from "@/components/site/hero-section";
 import { InquiryForm } from "@/components/site/inquiry-form";
 import { SiteFooter, SiteHeader } from "@/components/site/site-shell";
 import { Button } from "@/components/ui/button";
@@ -34,19 +34,7 @@ function Index() {
     <>
       <SiteHeader />
       <main>
-        <section className="hero-section" aria-labelledby="home-title">
-          <img src={heroImage} alt="A large corporate conference stage produced with warm architectural lighting" width={1920} height={1280} fetchPriority="high" className="hero-image" />
-          <div className="hero-overlay" />
-          <div className="site-container relative z-10 flex min-h-[92svh] flex-col justify-end pb-12 pt-32 lg:min-h-[94svh] lg:pb-16">
-            <p className="hero-kicker">Strategy / Production / Influence</p>
-            <h1 id="home-title" className="hero-title"><span>Creating experiences.</span><span>Building brands.</span><span className="text-accent">Driving business.</span></h1>
-            <div className="mt-8 grid gap-7 border-t border-hero-foreground/30 pt-7 md:grid-cols-[1fr_auto] md:items-end lg:mt-10 lg:grid-cols-[1fr_1fr]">
-              <p className="max-w-xl text-base leading-7 text-hero-muted lg:ml-auto">Eon Media unites end-to-end event production, strategic marketing, corporate communications, branding and advisory under one accountable partner.</p>
-              <div className="flex flex-wrap gap-3 md:row-start-1"><Button asChild variant="hero" size="xl"><a href="#services">Explore Services <ArrowRight /></a></Button><Button asChild variant="heroOutline" size="xl"><a href="#inquiry">Schedule a Consultation</a></Button></div>
-            </div>
-          </div>
-          <a className="hero-scroll" href="#about" aria-label="Scroll to about Eon Media"><ArrowDown /></a>
-        </section>
+        <HeroSection />
 
         <section id="about" className="section-space bg-background">
           <div className="site-container">

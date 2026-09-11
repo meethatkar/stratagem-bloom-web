@@ -25,9 +25,9 @@ export function ServiceDetailTemplate({ service }: { service: ServiceDetail }) {
           <div className="hero-overlay" />
           <div className="site-container relative z-10 flex min-h-[78svh] flex-col justify-end pb-12 pt-32 lg:pb-16">
             <div className="flex items-center gap-4 text-hero-muted">
-              <Link to="/services" className="eyebrow hover:text-accent">
+              <a href="/#services" className="eyebrow hover:text-accent">
                 Services
-              </Link>
+              </a>
               <span className="h-px w-8 bg-current" />
               <p className="hero-kicker !mb-0">{service.eyebrow}</p>
             </div>
