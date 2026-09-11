@@ -17,28 +17,31 @@ export function Brand({
   variant?: LogoSize;
   className?: string;
 }) {
-  return (
-    <Logo
-      size={size || variant}
-      inverse={inverse}
-      asLink
-      href="/"
-      className={className}
-    />
-  );
+  return <Logo size={size || variant} inverse={inverse} asLink href="/" className={className} />;
 }
 
 function NavDropdown({ inverse }: { inverse: boolean }) {
   return (
     <div className="group relative">
-      <button className="nav-link text-sm font-medium text-foreground hover:text-foreground/70 inline-flex items-center gap-1.5 py-7 uppercase" aria-haspopup="true">
-        SERVICES <ChevronDown className="size-3.5 transition-transform group-hover:rotate-180 group-focus-within:rotate-180" />
+      <button
+        className="nav-link text-sm font-medium text-foreground hover:text-foreground/70 inline-flex items-center gap-1.5 py-7 uppercase"
+        aria-haspopup="true"
+      >
+        SERVICES{" "}
+        <ChevronDown className="size-3.5 transition-transform group-hover:rotate-180 group-focus-within:rotate-180" />
       </button>
       <div className="invisible absolute left-1/2 top-full w-[410px] -translate-x-1/2 translate-y-2 border border-border bg-background p-3 text-foreground opacity-0 shadow-2xl transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 z-50">
-        <p className="border-b border-border px-3 pb-3 pt-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">Integrated Capabilities</p>
+        <p className="border-b border-border px-3 pb-3 pt-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+          Integrated Capabilities
+        </p>
         {serviceMenu.map((item, index) => (
-          <a key={item} href="#services" className="flex items-center justify-between border-b border-border/70 px-3 py-3 text-sm transition-colors last:border-none hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none">
-            <span>{item}</span><span className="text-xs text-accent-strong">0{index + 1}</span>
+          <a
+            key={item}
+            href="#services"
+            className="flex items-center justify-between border-b border-border/70 px-3 py-3 text-sm transition-colors last:border-none hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none"
+          >
+            <span>{item}</span>
+            <span className="text-xs text-accent-strong">0{index + 1}</span>
           </a>
         ))}
       </div>
@@ -71,17 +74,29 @@ export function SiteHeader() {
         <div className="flex items-center gap-10">
           <Brand size="sm" />
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
-            <Link className="nav-link text-sm font-medium text-foreground hover:text-foreground/70 uppercase" to="/">
+            <Link
+              className="nav-link text-sm font-medium text-foreground hover:text-foreground/70 uppercase"
+              to="/"
+            >
               HOME
             </Link>
-            <Link className="nav-link text-sm font-medium text-foreground hover:text-foreground/70 uppercase" to="/about">
+            <Link
+              className="nav-link text-sm font-medium text-foreground hover:text-foreground/70 uppercase"
+              to="/about"
+            >
               ABOUT US
             </Link>
             <NavDropdown inverse={false} />
-            <a className="nav-link text-sm font-medium text-foreground hover:text-foreground/70 uppercase" href="/#real-estate">
+            <a
+              className="nav-link text-sm font-medium text-foreground hover:text-foreground/70 uppercase"
+              href="/#real-estate"
+            >
               REAL ESTATE SOLUTIONS
             </a>
-            <a className="nav-link text-sm font-medium text-foreground hover:text-foreground/70 uppercase" href="/#inquiry">
+            <a
+              className="nav-link text-sm font-medium text-foreground hover:text-foreground/70 uppercase"
+              href="/#inquiry"
+            >
               CONTACT US
             </a>
           </nav>
@@ -119,13 +134,32 @@ export function SiteHeader() {
 
       {/* Mobile Drawer Menu */}
       {open && (
-        <nav className="border-t border-border bg-background px-6 pb-8 pt-4 text-foreground lg:hidden" aria-label="Mobile navigation">
+        <nav
+          className="border-t border-border bg-background px-6 pb-8 pt-4 text-foreground lg:hidden"
+          aria-label="Mobile navigation"
+        >
           <div className="flex flex-col gap-3">
-            <Link onClick={() => setOpen(false)} className="mobile-nav-link" to="/about">About Us</Link>
-            <a onClick={() => setOpen(false)} className="mobile-nav-link" href="/#services">Services</a>
-            <a onClick={() => setOpen(false)} className="mobile-nav-link text-accent-strong" href="/#real-estate">Real Estate Solutions</a>
-            <a onClick={() => setOpen(false)} className="mobile-nav-link" href="/#inquiry">Contact Us</a>
-            <Button asChild variant="premium" size="lg" className="mt-5 w-full"><a onClick={() => setOpen(false)} href="/#inquiry">Request a Quote <ArrowRight /></a></Button>
+            <Link onClick={() => setOpen(false)} className="mobile-nav-link" to="/about">
+              About Us
+            </Link>
+            <a onClick={() => setOpen(false)} className="mobile-nav-link" href="/#services">
+              Services
+            </a>
+            <a
+              onClick={() => setOpen(false)}
+              className="mobile-nav-link text-accent-strong"
+              href="/#real-estate"
+            >
+              Real Estate Solutions
+            </a>
+            <a onClick={() => setOpen(false)} className="mobile-nav-link" href="/#inquiry">
+              Contact Us
+            </a>
+            <Button asChild variant="premium" size="lg" className="mt-5 w-full">
+              <a onClick={() => setOpen(false)} href="/#inquiry">
+                Request a Quote <ArrowRight />
+              </a>
+            </Button>
           </div>
         </nav>
       )}
@@ -138,16 +172,85 @@ export function SiteFooter() {
     <footer className="bg-ink text-ink-foreground">
       <div className="site-container py-16 lg:py-24">
         <div className="grid gap-12 border-b border-ink-foreground/15 pb-16 md:grid-cols-2 lg:grid-cols-[1.25fr_.75fr_1fr_1.25fr]">
-          <div><Brand inverse size="md" /><p className="mt-6 max-w-xs text-sm leading-7 text-ink-muted">Strategic thinking, creative distinction and precise execution—from Bangalore to markets across India.</p></div>
-          <div><h2 className="footer-title">Navigate</h2><div className="footer-links"><Link to="/about">About Us</Link><a href="/#services">Services</a><a href="/#real-estate">Real Estate</a><a href="/#inquiry">Contact Us</a></div></div>
-          <div><h2 className="footer-title">Contact</h2><div className="footer-links"><a href="mailto:sales@eonmedia.co.in">sales@eonmedia.co.in</a><a href="mailto:marketing@eonmedia.co.in">marketing@eonmedia.co.in</a><a href="tel:+918433857555">+91 84338 57555</a></div></div>
-          <div><h2 className="footer-title">Bangalore</h2><address className="not-italic text-sm leading-7 text-ink-muted">No. 235 Binnamangala, 2nd Stage ProWork,<br />Indiranagar, Bangalore North,<br />Karnataka – 560038</address></div>
+          <div>
+            <Brand inverse size="md" />
+            <p className="mt-6 max-w-xs text-sm leading-7 text-ink-muted">
+              Strategic thinking, creative distinction and precise execution—from Bangalore to
+              markets across India.
+            </p>
+          </div>
+          <div>
+            <h2 className="footer-title">Navigate</h2>
+            <div className="footer-links">
+              <Link to="/about">About Us</Link>
+              <a href="/#services">Services</a>
+              <a href="/#real-estate">Real Estate</a>
+              <a href="/#inquiry">Contact Us</a>
+            </div>
+          </div>
+          <div>
+            <h2 className="footer-title">Contact</h2>
+            <div className="footer-links">
+              <a href="mailto:sales@eonmedia.co.in">sales@eonmedia.co.in</a>
+              <a href="mailto:marketing@eonmedia.co.in">marketing@eonmedia.co.in</a>
+              <a href="tel:+918433857555">+91 84338 57555</a>
+            </div>
+          </div>
+          <div>
+            <h2 className="footer-title">Bangalore</h2>
+            <address className="not-italic text-sm leading-7 text-ink-muted">
+              No. 235 Binnamangala, 2nd Stage ProWork,
+              <br />
+              Indiranagar, Bangalore North,
+              <br />
+              Karnataka – 560038
+            </address>
+          </div>
         </div>
         <div className="grid gap-10 border-b border-ink-foreground/15 py-10 lg:grid-cols-2 lg:items-end">
-          <div><p className="eyebrow text-accent">Eon Briefing</p><h2 className="mt-3 font-display text-3xl">Ideas, perspectives and industry signals.</h2></div>
-          <form className="flex border-b border-ink-foreground/40" onSubmit={(event) => event.preventDefault()}><label className="sr-only" htmlFor="newsletter">Work email</label><input id="newsletter" type="email" required placeholder="Your work email" className="h-12 min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-ink-muted" /><Button type="submit" variant="ghostOnDark" size="icon" aria-label="Subscribe"><ArrowRight /></Button></form>
+          <div>
+            <p className="eyebrow text-accent">Eon Briefing</p>
+            <h2 className="mt-3 font-display text-3xl">
+              Ideas, perspectives and industry signals.
+            </h2>
+          </div>
+          <form
+            className="flex border-b border-ink-foreground/40"
+            onSubmit={(event) => event.preventDefault()}
+          >
+            <label className="sr-only" htmlFor="newsletter">
+              Work email
+            </label>
+            <input
+              id="newsletter"
+              type="email"
+              required
+              placeholder="Your work email"
+              className="h-12 min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-ink-muted"
+            />
+            <Button type="submit" variant="ghostOnDark" size="icon" aria-label="Subscribe">
+              <ArrowRight />
+            </Button>
+          </form>
         </div>
-        <div className="flex flex-col gap-5 pt-8 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between"><p>© 2026 Eon Media. All rights reserved.</p><div className="flex gap-3"><a className="social-link" href="#" aria-label="LinkedIn"><Linkedin /></a><a className="social-link" href="#" aria-label="Instagram"><Instagram /></a><a className="social-link" href="mailto:sales@eonmedia.co.in" aria-label="Email Eon Media"><MoveUpRight /></a></div></div>
+        <div className="flex flex-col gap-5 pt-8 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between">
+          <p>© 2026 Eon Media. All rights reserved.</p>
+          <div className="flex gap-3">
+            <a className="social-link" href="#" aria-label="LinkedIn">
+              <Linkedin />
+            </a>
+            <a className="social-link" href="#" aria-label="Instagram">
+              <Instagram />
+            </a>
+            <a
+              className="social-link"
+              href="mailto:sales@eonmedia.co.in"
+              aria-label="Email Eon Media"
+            >
+              <MoveUpRight />
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
   );

@@ -17,7 +17,10 @@ export const Route = createFileRoute("/about")({
         content:
           "Eon Media is an integrated partner for events, corporate communications, branding, digital marketing and business growth advisory based in Bangalore, India.",
       },
-      { property: "og:title", content: "About Eon Media | Integrated Events, Marketing & Communications" },
+      {
+        property: "og:title",
+        content: "About Eon Media | Integrated Events, Marketing & Communications",
+      },
       {
         property: "og:description",
         content:
@@ -53,7 +56,8 @@ function AboutPage() {
               <span className="text-accent">Eon Media</span>
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-7 text-hero-muted lg:mt-8">
-              We are the integrated partner organisations rely on when events, communications, brand, marketing and business growth must work as one.
+              We are the integrated partner organisations rely on when events, communications,
+              brand, marketing and business growth must work as one.
             </p>
           </div>
         </section>
@@ -66,7 +70,10 @@ function AboutPage() {
                 <div>
                   <h2 className="display-heading">{companyProfile.headline}</h2>
                   {companyProfile.body.map((paragraph) => (
-                    <p key={paragraph.slice(0, 24)} className="mt-8 max-w-2xl text-lg leading-8 text-muted-foreground">
+                    <p
+                      key={paragraph.slice(0, 24)}
+                      className="mt-8 max-w-2xl text-lg leading-8 text-muted-foreground"
+                    >
                       {paragraph}
                     </p>
                   ))}
@@ -79,7 +86,9 @@ function AboutPage() {
                   <div key={capability.title} className="capability-cell">
                     <span>0{index + 1}</span>
                     <p>{capability.title}</p>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{capability.description}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {capability.description}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -94,7 +103,9 @@ function AboutPage() {
                 <div className="relative">
                   <div className="aspect-[4/5] bg-ink p-6 text-ink-foreground sm:p-8">
                     <div className="flex h-full flex-col justify-between border border-ink-foreground/20 p-6 sm:p-8">
-                      <span className="font-display text-7xl font-medium text-accent sm:text-8xl">RK</span>
+                      <span className="font-display text-7xl font-medium text-accent sm:text-8xl">
+                        RK
+                      </span>
                       <div>
                         <p className="font-display text-2xl">{leadership.name}</p>
                         <p className="mt-1 text-sm text-ink-muted">{leadership.role}</p>
@@ -109,9 +120,14 @@ function AboutPage() {
                   </blockquote>
                   <div className="mt-10 grid gap-4 sm:grid-cols-2">
                     {leadership.themes.map((theme) => (
-                      <div key={theme} className="flex items-center gap-3 border-b border-border pb-3">
+                      <div
+                        key={theme}
+                        className="flex items-center gap-3 border-b border-border pb-3"
+                      >
                         <span className="size-2 bg-accent" />
-                        <span className="text-sm font-semibold uppercase tracking-wider">{theme}</span>
+                        <span className="text-sm font-semibold uppercase tracking-wider">
+                          {theme}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -140,10 +156,14 @@ function AboutPage() {
                     <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">
                       0{index + 1}
                     </span>
-                    <h3 className={`mt-6 font-display ${isLarge ? "text-3xl lg:text-4xl" : "text-2xl"}`}>
+                    <h3
+                      className={`mt-6 font-display ${isLarge ? "text-3xl lg:text-4xl" : "text-2xl"}`}
+                    >
                       {value.title}
                     </h3>
-                    <p className="mt-4 max-w-md text-sm leading-6 text-ink-muted">{value.description}</p>
+                    <p className="mt-4 max-w-md text-sm leading-6 text-ink-muted">
+                      {value.description}
+                    </p>
                   </Reveal>
                 );
               })}
@@ -176,9 +196,19 @@ function AboutPage() {
   );
 }
 
-function SectionLabel({ number, dark = false, children }: { number: string; dark?: boolean; children: ReactNode }) {
+function SectionLabel({
+  number,
+  dark = false,
+  children,
+}: {
+  number: string;
+  dark?: boolean;
+  children: ReactNode;
+}) {
   return (
-    <div className={`flex items-center gap-4 self-start ${dark ? "text-ink-muted" : "text-muted-foreground"}`}>
+    <div
+      className={`flex items-center gap-4 self-start ${dark ? "text-ink-muted" : "text-muted-foreground"}`}
+    >
       <span className="text-[10px] font-semibold tracking-[0.18em] text-accent">{number}</span>
       <span className="h-px w-10 bg-current" />
       <p className="eyebrow">{children}</p>

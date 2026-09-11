@@ -15,9 +15,18 @@ export function HeroSection() {
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
   const headlines = [
-    <>END-TO-END <br />EVENTS.</>,
-    <>STRATEGIC <br />MARKETING.</>,
-    <>CORPORATE <br />PR.</>,
+    <>
+      END-TO-END <br />
+      EVENTS.
+    </>,
+    <>
+      STRATEGIC <br />
+      MARKETING.
+    </>,
+    <>
+      CORPORATE <br />
+      PR.
+    </>,
   ];
 
   const images = [eventImage, marketingImage, prImage];
@@ -28,15 +37,20 @@ export function HeroSection() {
     const textEls = containerRef.current.querySelectorAll(".service-text");
     const imageEls = containerRef.current.querySelectorAll(".service-image");
     const descEls = containerRef.current.querySelectorAll(".service-desc");
-    
+
     if (textEls.length > 0 && imageEls.length > 0 && descEls.length > 0) {
       gsap.set(textEls[0] as Element, { opacity: 1, y: 0, zIndex: 10, pointerEvents: "auto" });
       gsap.set(imageEls[0] as Element, { opacity: 1, scale: 1, zIndex: 10, pointerEvents: "auto" });
       gsap.set(descEls[0] as Element, { opacity: 1, y: 0, zIndex: 10, pointerEvents: "auto" });
-      
+
       for (let i = 1; i < textEls.length; i++) {
         gsap.set(textEls[i] as Element, { opacity: 0, y: 25, zIndex: 0, pointerEvents: "none" });
-        gsap.set(imageEls[i] as Element, { opacity: 0, scale: 0.94, zIndex: 0, pointerEvents: "none" });
+        gsap.set(imageEls[i] as Element, {
+          opacity: 0,
+          scale: 0.94,
+          zIndex: 0,
+          pointerEvents: "none",
+        });
         gsap.set(descEls[i] as Element, { opacity: 0, y: 25, zIndex: 0, pointerEvents: "none" });
       }
     }
@@ -53,7 +67,15 @@ export function HeroSection() {
     const imageEls = containerRef.current?.querySelectorAll(".service-image");
     const descEls = containerRef.current?.querySelectorAll(".service-desc");
 
-    if (!textEls || !imageEls || !descEls || textEls.length === 0 || imageEls.length === 0 || descEls.length === 0) return;
+    if (
+      !textEls ||
+      !imageEls ||
+      !descEls ||
+      textEls.length === 0 ||
+      imageEls.length === 0 ||
+      descEls.length === 0
+    )
+      return;
 
     const oldText = textEls[oldIndex] as Element;
     const newText = textEls[newIndex] as Element;
@@ -79,30 +101,32 @@ export function HeroSection() {
         duration: 0.45,
         ease: "power2.inOut",
       },
-      0
-    ).to(
-      oldImage,
-      {
-        opacity: 0,
-        scale: 1.04,
-        pointerEvents: "none",
-        zIndex: 0,
-        duration: 0.45,
-        ease: "power2.inOut",
-      },
-      0
-    ).to(
-      oldDesc,
-      {
-        opacity: 0,
-        y: -25,
-        pointerEvents: "none",
-        zIndex: 0,
-        duration: 0.45,
-        ease: "power2.inOut",
-      },
-      0
-    );
+      0,
+    )
+      .to(
+        oldImage,
+        {
+          opacity: 0,
+          scale: 1.04,
+          pointerEvents: "none",
+          zIndex: 0,
+          duration: 0.45,
+          ease: "power2.inOut",
+        },
+        0,
+      )
+      .to(
+        oldDesc,
+        {
+          opacity: 0,
+          y: -25,
+          pointerEvents: "none",
+          zIndex: 0,
+          duration: 0.45,
+          ease: "power2.inOut",
+        },
+        0,
+      );
 
     tl.fromTo(
       newText,
@@ -115,32 +139,34 @@ export function HeroSection() {
         duration: 0.45,
         ease: "power2.inOut",
       },
-      0.12
-    ).fromTo(
-      newImage,
-      { opacity: 0, scale: 0.94, zIndex: 10 },
-      {
-        opacity: 1,
-        scale: 1,
-        pointerEvents: "auto",
-        zIndex: 10,
-        duration: 0.45,
-        ease: "power2.inOut",
-      },
-      0.12
-    ).fromTo(
-      newDesc,
-      { opacity: 0, y: 25, zIndex: 10 },
-      {
-        opacity: 1,
-        y: 0,
-        pointerEvents: "auto",
-        zIndex: 10,
-        duration: 0.45,
-        ease: "power2.inOut",
-      },
-      0.12
-    );
+      0.12,
+    )
+      .fromTo(
+        newImage,
+        { opacity: 0, scale: 0.94, zIndex: 10 },
+        {
+          opacity: 1,
+          scale: 1,
+          pointerEvents: "auto",
+          zIndex: 10,
+          duration: 0.45,
+          ease: "power2.inOut",
+        },
+        0.12,
+      )
+      .fromTo(
+        newDesc,
+        { opacity: 0, y: 25, zIndex: 10 },
+        {
+          opacity: 1,
+          y: 0,
+          pointerEvents: "auto",
+          zIndex: 10,
+          duration: 0.45,
+          ease: "power2.inOut",
+        },
+        0.12,
+      );
   }, []);
 
   const nextSlide = useCallback(() => {
@@ -184,9 +210,9 @@ export function HeroSection() {
   }, [isHovered, nextSlide]);
 
   return (
-    <section 
+    <section
       ref={containerRef}
-      className="relative min-h-screen bg-background overflow-hidden" 
+      className="relative min-h-screen bg-background overflow-hidden"
       aria-labelledby="home-title"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -198,7 +224,10 @@ export function HeroSection() {
             {/* Headline Container with absolute positioning for GSAP overlapping */}
             <div className="relative min-h-[160px] sm:min-h-[200px] w-full">
               {headlines.map((headline, idx) => (
-                <div key={idx} className="service-text absolute inset-0 flex flex-col justify-end opacity-0 pointer-events-none">
+                <div
+                  key={idx}
+                  className="service-text absolute inset-0 flex flex-col justify-end opacity-0 pointer-events-none"
+                >
                   <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold uppercase leading-[1.06] tracking-tight text-foreground">
                     {headline}
                   </h1>
@@ -208,7 +237,11 @@ export function HeroSection() {
 
             {/* CTA Buttons */}
             <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4 relative z-20">
-              <Button asChild size="xl" className="bg-foreground text-background hover:bg-foreground/90 font-medium px-8 py-6 rounded-none text-sm tracking-widest uppercase">
+              <Button
+                asChild
+                size="xl"
+                className="bg-foreground text-background hover:bg-foreground/90 font-medium px-8 py-6 rounded-none text-sm tracking-widest uppercase"
+              >
                 <a href="#services" className="inline-flex items-center gap-3">
                   EXPLORE SERVICES <ArrowRight className="size-5" />
                 </a>

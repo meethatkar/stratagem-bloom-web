@@ -34,7 +34,9 @@ export function ServiceDetailTemplate({ service }: { service: ServiceDetail }) {
             <h1 id="service-title" className="hero-title mt-5 max-w-5xl">
               {service.title}
             </h1>
-            <p className="mt-6 max-w-2xl text-base leading-7 text-hero-muted lg:mt-8">{service.shortDescription}</p>
+            <p className="mt-6 max-w-2xl text-base leading-7 text-hero-muted lg:mt-8">
+              {service.shortDescription}
+            </p>
           </div>
         </section>
 
@@ -46,7 +48,10 @@ export function ServiceDetailTemplate({ service }: { service: ServiceDetail }) {
                 <div>
                   <h2 className="display-heading">{service.intro.heading}</h2>
                   {service.intro.body.map((paragraph) => (
-                    <p key={paragraph.slice(0, 24)} className="mt-8 max-w-2xl text-lg leading-8 text-muted-foreground">
+                    <p
+                      key={paragraph.slice(0, 24)}
+                      className="mt-8 max-w-2xl text-lg leading-8 text-muted-foreground"
+                    >
                       {paragraph}
                     </p>
                   ))}
@@ -92,7 +97,9 @@ export function ServiceDetailTemplate({ service }: { service: ServiceDetail }) {
                 <SectionLabel number="03" dark>
                   Our Approach
                 </SectionLabel>
-                <h2 className="mt-8 font-display text-4xl leading-tight sm:text-5xl">{service.editorial.heading}</h2>
+                <h2 className="mt-8 font-display text-4xl leading-tight sm:text-5xl">
+                  {service.editorial.heading}
+                </h2>
                 <p className="mt-7 max-w-xl leading-7 text-ink-muted">{service.editorial.body}</p>
                 <div className="mt-10 grid gap-px bg-ink-foreground/15">
                   {service.editorial.points.map((point) => (
@@ -118,7 +125,9 @@ export function ServiceDetailTemplate({ service }: { service: ServiceDetail }) {
             <div className="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
               {service.process.map((step) => (
                 <Reveal key={step.step} className="border-t-2 border-accent pt-6">
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">{step.step}</span>
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">
+                    {step.step}
+                  </span>
                   <h3 className="mt-5 font-display text-2xl">{step.title}</h3>
                   <p className="mt-3 text-sm leading-6 text-muted-foreground">{step.description}</p>
                 </Reveal>
@@ -137,11 +146,16 @@ export function ServiceDetailTemplate({ service }: { service: ServiceDetail }) {
             </Reveal>
             <div className="grid gap-8">
               {service.outcomes.map((outcome, index) => (
-                <Reveal key={outcome.title} className="flex gap-6 border-b border-border pb-8 last:border-none">
+                <Reveal
+                  key={outcome.title}
+                  className="flex gap-6 border-b border-border pb-8 last:border-none"
+                >
                   <span className="font-display text-3xl text-accent">0{index + 1}</span>
                   <div>
                     <h3 className="font-display text-2xl">{outcome.title}</h3>
-                    <p className="mt-2 max-w-xl leading-7 text-muted-foreground">{outcome.description}</p>
+                    <p className="mt-2 max-w-xl leading-7 text-muted-foreground">
+                      {outcome.description}
+                    </p>
                   </div>
                 </Reveal>
               ))}
@@ -156,7 +170,9 @@ export function ServiceDetailTemplate({ service }: { service: ServiceDetail }) {
                 <SectionLabel number="06" dark>
                   Related Services
                 </SectionLabel>
-                <h2 className="display-heading max-w-3xl">Capabilities that work well alongside this.</h2>
+                <h2 className="display-heading max-w-3xl">
+                  Capabilities that work well alongside this.
+                </h2>
               </div>
             </Reveal>
             <div className="mt-10 grid gap-px bg-ink-foreground/15 md:grid-cols-3">
@@ -171,7 +187,9 @@ export function ServiceDetailTemplate({ service }: { service: ServiceDetail }) {
                         {item.number}
                       </span>
                       <h3 className="mt-6 font-display text-2xl">{item.title}</h3>
-                      <p className="mt-3 text-sm leading-6 text-ink-muted">{item.shortDescription}</p>
+                      <p className="mt-3 text-sm leading-6 text-ink-muted">
+                        {item.shortDescription}
+                      </p>
                     </div>
                     <span className="text-accent transition-transform group-hover:translate-x-1">
                       <MoveUpRight className="size-5" />
@@ -216,7 +234,9 @@ export function SectionLabel({
   children: React.ReactNode;
 }) {
   return (
-    <div className={`flex items-center gap-4 self-start ${dark ? "text-ink-muted" : "text-muted-foreground"}`}>
+    <div
+      className={`flex items-center gap-4 self-start ${dark ? "text-ink-muted" : "text-muted-foreground"}`}
+    >
       <span className="text-[10px] font-semibold tracking-[0.18em] text-accent">{number}</span>
       <span className="h-px w-10 bg-current" />
       <p className="eyebrow">{children}</p>

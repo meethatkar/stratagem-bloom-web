@@ -15,10 +15,14 @@ export function Reveal({ children, className }: { children: ReactNode; className
           observer.disconnect();
         }
       },
-      { threshold: 0.12 }
+      { threshold: 0.12 },
     );
     observer.observe(node);
     return () => observer.disconnect();
   }, []);
-  return <div ref={ref} className={cn("reveal", className)}>{children}</div>;
+  return (
+    <div ref={ref} className={cn("reveal", className)}>
+      {children}
+    </div>
+  );
 }

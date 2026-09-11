@@ -51,7 +51,11 @@ export function HeroTabs({
           }}
         />
 
-        <div className="grid grid-cols-3 gap-2 pt-4" role="tablist" aria-label="Hero capability steps">
+        <div
+          className="grid grid-cols-3 gap-2 pt-4"
+          role="tablist"
+          aria-label="Hero capability steps"
+        >
           {HERO_STEPS.map((step, index) => {
             const isActive = activeTab === index;
             return (
@@ -61,7 +65,9 @@ export function HeroTabs({
                 aria-selected={isActive}
                 onClick={() => setActiveTab(index)}
                 className={`text-left transition-colors focus-visible:outline-none ${
-                  isActive ? "text-foreground font-semibold" : "text-muted-foreground hover:text-foreground"
+                  isActive
+                    ? "text-foreground font-semibold"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 <span className="text-xs tracking-wider block sm:inline">
@@ -77,7 +83,10 @@ export function HeroTabs({
       {/* Active Step Description */}
       <div className="mt-6 relative min-h-[72px]">
         {HERO_STEPS.map((step, idx) => (
-          <div key={step.id} className="service-desc absolute inset-0 opacity-0 pointer-events-none">
+          <div
+            key={step.id}
+            className="service-desc absolute inset-0 opacity-0 pointer-events-none"
+          >
             <p className="text-sm sm:text-base leading-relaxed text-muted-foreground max-w-xl">
               {step.description}
             </p>
