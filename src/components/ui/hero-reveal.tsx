@@ -14,6 +14,6 @@ export const HeroReveal = React.forwardRef<HTMLDivElement, HeroRevealProps>(
         {...props}
       />
     );
-  }
+  },
 );
 HeroReveal.displayName = "HeroReveal";

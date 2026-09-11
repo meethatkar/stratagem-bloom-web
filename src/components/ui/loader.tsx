@@ -2,7 +2,7 @@ import * as React from "react";
 import "./loader.css";
 import { cn } from "@/lib/utils";
 
-interface LoaderProps extends React.HTMLAttributes<HTMLDivElement> {}
+type LoaderProps = React.HTMLAttributes<HTMLDivElement>;
 
 export function Loader({ className, ...props }: LoaderProps) {
   return (

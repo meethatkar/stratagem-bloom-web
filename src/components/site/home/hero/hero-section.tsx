@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import eventImage from "@/assets/eon-hero-event.jpg";
 import marketingImage from "@/assets/service-digital-marketing.jpg";
 import prImage from "@/assets/service-pr-communications.jpg";
-import { HeroTabs, HERO_STEPS } from "@/components/site/hero-tabs";
+import { HeroTabs, HERO_STEPS } from "@/components/site/home/hero/hero-tabs";
 import { HeroReveal } from "@/components/ui/hero-reveal";
 import { Button } from "@/components/ui/button";
 import gsap from "gsap";
@@ -44,25 +44,25 @@ export function HeroSection({
 
   // Set initial state on mount
   useEffect(() => {
-    const textEls = textRefs.current.filter(Boolean);
-    const imageEls = imageRefs.current.filter(Boolean);
-    const descEls = descRefs.current.filter(Boolean);
+    const textEls = textRefs.current.filter((el): el is HTMLDivElement => el !== null);
+    const imageEls = imageRefs.current.filter((el): el is HTMLImageElement => el !== null);
+    const descEls = descRefs.current.filter((el): el is HTMLDivElement => el !== null);
 
     if (textEls.length > 0 && imageEls.length > 0 && descEls.length > 0) {
-      gsap.set(textEls[0], { opacity: 1, y: 0, zIndex: 10, pointerEvents: "auto" });
-      gsap.set(imageEls[0], { opacity: 1, scale: 1, zIndex: 10, pointerEvents: "auto" });
-      gsap.set(descEls[0], { opacity: 1, y: 0, zIndex: 10, pointerEvents: "auto" });
+      gsap.set(textEls[0]!, { opacity: 1, y: 0, zIndex: 10, pointerEvents: "auto" });
+      gsap.set(imageEls[0]!, { opacity: 1, scale: 1, zIndex: 10, pointerEvents: "auto" });
+      gsap.set(descEls[0]!, { opacity: 1, y: 0, zIndex: 10, pointerEvents: "auto" });
 
       for (let i = 1; i < textEls.length; i++) {
-        gsap.set(textEls[i], { opacity: 0, y: 25, zIndex: 0, pointerEvents: "none" });
-        gsap.set(imageEls[i], {
+        gsap.set(textEls[i]!, { opacity: 0, y: 25, zIndex: 0, pointerEvents: "none" });
+        gsap.set(imageEls[i]!, {
           opacity: 0,
           scale: 0.94,
           zIndex: 0,
           pointerEvents: "none",
         });
         if (descEls[i]) {
-          gsap.set(descEls[i], { opacity: 0, y: 25, zIndex: 0, pointerEvents: "none" });
+          gsap.set(descEls[i]!, { opacity: 0, y: 25, zIndex: 0, pointerEvents: "none" });
         }
       }
     }

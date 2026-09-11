@@ -6,8 +6,9 @@ import { Reveal } from "@/components/site/reveal";
 
 import productionImage from "@/assets/eon-production-detail.jpg";
 import realEstateImage from "@/assets/eon-real-estate.jpg";
-import { HeroSection } from "@/components/site/hero-section";
-import { InquiryForm } from "@/components/site/inquiry-form";
+import { HeroSection } from "@/components/site/home/hero/hero-section";
+import AboutSection from "@/components/site/home/about/AboutSection";
+import { InquiryForm } from "@/components/site/home/inquiry-form";
 import { SiteFooter, SiteHeader } from "@/components/site/site-shell";
 import { Button } from "@/components/ui/button";
 import { MainLoaderPage } from "@/components/ui/main-loader";
@@ -67,7 +68,7 @@ function Index() {
   const revealUpRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       // Wait for initial paint
       const timer = setTimeout(() => {
         const tl = gsap.timeline({
@@ -118,71 +119,7 @@ function Index() {
       <main>
         <HeroSection revealDownRef={revealDownRef} revealUpRef={revealUpRef} />
 
-        <section id="about" className="section-space bg-background">
-          <div className="site-container">
-            <Reveal>
-              <div className="grid gap-10 lg:grid-cols-[.78fr_1.35fr] lg:gap-24">
-                <SectionLabel number="01">Integrated Capability</SectionLabel>
-                <div>
-                  <h2 className="display-heading">
-                    One partner from first thought to final impact.
-                  </h2>
-                  <p className="mt-8 max-w-2xl text-lg leading-8 text-muted-foreground">
-                    We bring strategy, ideas and operations into one connected system—giving
-                    ambitious organisations sharper thinking, stronger experiences and measurable
-                    commercial momentum.
-                  </p>
-                </div>
-              </div>
-            </Reveal>
-            <Reveal>
-              <div className="mt-16 grid border-y border-border md:grid-cols-5 lg:mt-24">
-                {capabilities.map((item, index) => (
-                  <div key={item} className="capability-cell">
-                    <span>0{index + 1}</span>
-                    <p>{item}</p>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-            <div className="mt-16 grid items-end gap-10 lg:mt-24 lg:grid-cols-[1fr_1.1fr] lg:gap-24">
-              <Reveal>
-                <div className="relative ml-auto max-w-lg">
-                  <img
-                    src={productionImage}
-                    alt="An event production director overseeing a live corporate programme"
-                    width={1536}
-                    height={1920}
-                    loading="lazy"
-                    className="aspect-[4/5] w-full object-cover"
-                  />
-                  <div className="absolute -bottom-7 -left-4 bg-accent px-5 py-6 text-accent-foreground sm:-left-8">
-                    <Crosshair className="size-6" />
-                    <p className="mt-8 max-w-36 text-xs font-semibold uppercase leading-5 tracking-[0.12em]">
-                      Precision at every point of execution
-                    </p>
-                  </div>
-                </div>
-              </Reveal>
-              <Reveal>
-                <div className="pb-2">
-                  <p className="eyebrow">The Eon Advantage</p>
-                  <h3 className="mt-6 font-display text-4xl leading-tight sm:text-5xl">
-                    Strategic enough for the boardroom. Precise enough for showtime.
-                  </h3>
-                  <p className="mt-7 max-w-xl leading-7 text-muted-foreground">
-                    Our teams move fluently between corporate priorities and on-ground realities.
-                    That means fewer hand-offs, clearer accountability and work that performs beyond
-                    the moment.
-                  </p>
-                  <a href="#inquiry" className="text-link mt-8">
-                    Discuss your brief <ArrowRight />
-                  </a>
-                </div>
-              </Reveal>
-            </div>
-          </div>
-        </section>
+        <AboutSection />
 
         <section id="services" className="section-space bg-ink text-ink-foreground">
           <div className="site-container">
