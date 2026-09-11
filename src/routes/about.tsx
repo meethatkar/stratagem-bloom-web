@@ -131,16 +131,13 @@ function AboutPage() {
                 <h2 className="display-heading max-w-4xl">{missionValues.headline}</h2>
               </div>
             </Reveal>
-            <div className="mt-12 grid gap-px bg-ink-foreground/10 sm:grid-cols-2">
+            <div className="mt-12 grid gap-px bg-ink-foreground/10 lg:grid-cols-12">
               {missionValues.values.map((value, index) => {
+                const span = index === 0 || index === 3 ? "lg:col-span-7" : "lg:col-span-5";
                 const isLarge = index === 0 || index === 3;
                 return (
                   <Reveal key={value.title}>
-                    <div
-                      className={`h-full bg-ink p-6 lg:p-10 ${isLarge ? "sm:col-span-2 lg:col-span-1" : ""} ${
-                        index === 0 ? "lg:row-span-2" : ""
-                      }`}
-                    >
+                    <div className={`h-full bg-ink p-6 ${span} lg:p-10`}>
                       <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">
                         0{index + 1}
                       </span>
