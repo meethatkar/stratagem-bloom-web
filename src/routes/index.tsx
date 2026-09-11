@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowDown, ArrowRight, Crosshair, MoveUpRight } from "lucide-react";
-import { useEffect, useRef, type ReactNode } from "react";
+import type { ReactNode } from "react";
+
+import { Reveal } from "@/components/site/reveal";
 
 import heroImage from "@/assets/eon-hero-event.jpg";
 import productionImage from "@/assets/eon-production-detail.jpg";
@@ -81,9 +83,3 @@ function Index() {
 }
 
 function SectionLabel({ number, dark = false, children }: { number: string; dark?: boolean; children: ReactNode }) { return <div className={`flex items-center gap-4 self-start ${dark ? "text-ink-muted" : "text-muted-foreground"}`}><span className="text-[10px] font-semibold tracking-[0.18em] text-accent">{number}</span><span className="h-px w-10 bg-current" /><p className="eyebrow">{children}</p></div>; }
-
-function Reveal({ children }: { children: ReactNode }) {
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => { const node = ref.current; if (!node) return; const observer = new IntersectionObserver((entries) => { const entry = entries[0]; if (entry?.isIntersecting) { node.classList.add("is-visible"); observer.disconnect(); } }, { threshold: 0.12 }); observer.observe(node); return () => observer.disconnect(); }, []);
-  return <div ref={ref} className="reveal">{children}</div>;
-}
