@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, type ReactNode } from "react";
 import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -43,6 +43,6 @@ export function InquiryForm() {
   );
 }
 
-function Field({ id, label, error, wide, children }: { id: string; label: string; error?: string; wide?: boolean; children: React.ReactNode }) {
+function Field({ id, label, error, wide, children }: { id: string; label: string; error?: string; wide?: boolean; children: ReactNode }) {
   return <div className={wide ? "md:col-span-2" : ""}><Label htmlFor={id}>{label}</Label><div className="mt-2">{children}</div>{error && <p className="mt-2 text-xs text-destructive" role="alert">{error}</p>}</div>;
 }
