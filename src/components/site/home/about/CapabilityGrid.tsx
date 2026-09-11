@@ -8,8 +8,13 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+export interface CapabilityItem {
+  title: string;
+  gif: string;
+}
+
 export interface CapabilityGridProps {
-  capabilities: string[];
+  capabilities: CapabilityItem[];
 }
 
 const CapabilityGrid = ({ capabilities }: CapabilityGridProps) => {
@@ -44,15 +49,20 @@ const CapabilityGrid = ({ capabilities }: CapabilityGridProps) => {
     >
       {capabilities.map((item, index) => (
         <div
-          key={item}
-          className="capability-cell flex flex-col h-40 md:h-48 p-6 group cursor-pointer hover:bg-background/50 transition-colors duration-300"
+          key={item.title}
+          className="capability-cell flex flex-col h-48 md:h-56 p-6 group cursor-pointer hover:bg-background/50 transition-colors duration-300"
         >
-          <span className="text-accent text-xs font-bold font-mono mb-auto">0{index + 1}</span>
+          <span className="text-accent text-xs font-bold font-mono">0{index + 1}</span>
+          <div className="w-20 h-20 md:w-24 md:h-24 relative flex items-center justify-start">
+            <img
+              src={item.gif}
+              alt={item.title}
+              className={`max-w-full max-h-full object-contain mix-blend-multiply ${index === 2 ? "" : "grayscale"}`}
+            />
+          </div>
           <p className="font-medium text-sm md:text-base pr-4 group-hover:text-accent transition-colors">
-            {item}
+            {item.title}
           </p>
-          {/* Lottie Container for Later */}
-          <div className="w-8 h-8 mt-4 opacity-0 group-hover:opacity-100 transition-opacity"></div>
         </div>
       ))}
     </div>

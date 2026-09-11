@@ -2,17 +2,22 @@ import React from "react";
 import SectionLabel from "./SectionLabel";
 import TextReveal from "@/components/animations/TextReveal";
 import ScrubHighlightText from "@/components/animations/SrubHighlightText";
-import CapabilityGrid from "./CapabilityGrid";
+import liveExpGif from "@/assets/Gifs/Live_Experience.gif";
+import brandGif from "@/assets/Gifs/Idea.gif";
+import marketingGif from "@/assets/Gifs/BarGraph.gif";
+import commsGif from "@/assets/Gifs/Communication.gif";
+import advisoryGif from "@/assets/Gifs/Briefcase.gif";
+import CapabilityGrid, { CapabilityItem } from "./CapabilityGrid";
 import EonAdvantage from "./EonAdvantage";
 
 const AboutSection = () => {
   // This array will eventually come from your Sanity CMS query
-  const capabilities: string[] = [
-    "Live Experiences",
-    "Brand & Creative",
-    "Strategic Marketing",
-    "Corporate Communications",
-    "Business Advisory",
+  const capabilities: CapabilityItem[] = [
+    { title: "Live Experiences", gif: liveExpGif },
+    { title: "Brand & Creative", gif: brandGif },
+    { title: "Strategic Marketing", gif: marketingGif },
+    { title: "Corporate Communications", gif: commsGif },
+    { title: "Business Advisory", gif: advisoryGif },
   ];
 
   return (
