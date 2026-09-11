@@ -10,7 +10,10 @@ import { HeroSection } from "@/components/site/hero-section";
 import { InquiryForm } from "@/components/site/inquiry-form";
 import { SiteFooter, SiteHeader } from "@/components/site/site-shell";
 import { Button } from "@/components/ui/button";
+import { MainLoaderPage } from "@/components/ui/main-loader";
 import { capabilities, proofPoints, serviceOverview } from "@/content/site-data";
+import { useEffect, useState } from "react";
+import gsap from "gsap";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -58,8 +61,28 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [showLoader, setShowLoader] = useState(true);
+
+  useEffect(() => {
+    // Wait for initial paint
+    const timer = setTimeout(() => {
+      gsap.to("#main-loader-page", {
+        x: "-100%",
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.inOut",
+        onComplete: () => {
+          setShowLoader(false);
+        },
+      });
+    }, 500); // Small delay to let user see the loader
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
+      {showLoader && <MainLoaderPage />}
       <SiteHeader />
       <main>
         <HeroSection />

@@ -207,3 +207,4 @@ input:focus-visible, textarea:focus-visible { box-shadow: none; border-color: va
 @keyframes rise-in { from { opacity:0; transform:translateY(2rem); } to { opacity:1; transform:none; } }
 @keyframes hero-scale { from { transform:scale(1.04); } to { transform:scale(1); } }
 @media (prefers-reduced-motion: reduce) { *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none;} }
+
