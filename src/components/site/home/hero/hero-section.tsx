@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { ArrowRight } from "lucide-react";
 import eventImage from "@/assets/service-event-management.jpg";
 import marketingImage from "@/assets/stratergy-marketing.avif";
-import prImage from "@/assets/coperate-pr.jpeg";
+import prImage from "@/assets/coperate-pr.png";
 import { HeroTabs } from "@/components/site/home/hero/hero-tabs";
 import { HeroReveal } from "@/components/ui/hero-reveal";
 import { Button } from "@/components/ui/button";

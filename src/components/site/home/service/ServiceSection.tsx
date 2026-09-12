@@ -6,6 +6,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { AccordionServiceData } from "@/types/service.types";
 import ServiceAccordionItem from "./ServiceAccordionItem";
+import eventImage from "@/assets/service-event-management.jpg";
+import realEstateImage from "@/assets/eon-real-estate.jpg";
+import prImage from "@/assets/coperate-pr.png";
+import brandingImage from "@/assets/stratergy-marketing.avif";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger, useGSAP);
@@ -19,7 +23,7 @@ const servicesData: AccordionServiceData[] = [
     subtitle: "Flawless execution for global impact.",
     description:
       "Conventions, conferences, exhibitions, launches, networking forums and commercial events designed to leave a lasting impression on your stakeholders.",
-    image: "/assets/service-event-management.jpg",
+    image: eventImage,
     href: "/services#corporate-events",
   },
   {
@@ -28,7 +32,7 @@ const servicesData: AccordionServiceData[] = [
     subtitle: "Launch campaigns that drive momentum.",
     description:
       "Project launches, pre-launch campaigns, channel partner meets and immersive investor showcases designed around the realities of property marketing.",
-    image: "/assets/service-real-estate.jpg",
+    image: realEstateImage,
     href: "/services#real-estate",
   },
   {
@@ -37,7 +41,7 @@ const servicesData: AccordionServiceData[] = [
     subtitle: "Protecting and elevating your brand narrative.",
     description:
       "Brand reputation management, media relations, corporate storytelling, and stakeholder engagement to keep your business at the forefront of the industry.",
-    image: "/assets/coperate-pr.jpeg",
+    image: prImage,
     href: "/services#pr",
   },
   {
@@ -46,7 +50,7 @@ const servicesData: AccordionServiceData[] = [
     subtitle: "Crucial aspect of digital services.",
     description:
       "Brand identity, creative design, content, digital campaigns, and performance marketing engineered to move people and business.",
-    image: "/images/services/branding.jpg",
+    image: brandingImage,
     href: "/services#branding",
   },
 ];

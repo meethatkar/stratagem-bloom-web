@@ -1,8 +1,6 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 // Assuming you have an arrow icon component or lucide-react
 import { ArrowRight, Crosshair } from "lucide-react";
 
@@ -11,16 +9,36 @@ export interface EonAdvantageProps {
 }
 
 const EonAdvantage = ({ imageSrc }: EonAdvantageProps) => {
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const imageRevealRef = useRef<HTMLDivElement>(null);
+  const imageContainerRef = useRef<HTMLDivElement>(null);
+  const parallaxBoxRef = useRef<HTMLDivElement>(null);
+  const textContainerRef = useRef<HTMLDivElement>(null);
+  const advantageRevealRefs = useRef<(HTMLElement | null)[]>([]);
 
-  useGSAP(
-    () => {
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Image reveal from top
+      gsap.fromTo(
+        imageRevealRef.current,
+        { clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)" },
+        {
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+          duration: 1.5,
+          ease: "power3.inOut",
+          scrollTrigger: {
+            trigger: imageContainerRef.current,
+            start: "top 75%",
+          },
+        },
+      );
+
       // Parallax effect on the overlapping brown box
-      gsap.to(".parallax-box", {
+      gsap.to(parallaxBoxRef.current, {
         yPercent: -30,
         ease: "none",
         scrollTrigger: {
-          trigger: ".image-container",
+          trigger: imageContainerRef.current,
           start: "top bottom",
           end: "bottom top",
           scrub: 1,
@@ -29,7 +47,7 @@ const EonAdvantage = ({ imageSrc }: EonAdvantageProps) => {
 
       // Reveal text on the right
       gsap.fromTo(
-        ".advantage-reveal",
+        advantageRevealRefs.current,
         { y: 30, autoAlpha: 0 },
         {
           y: 0,
@@ -38,14 +56,15 @@ const EonAdvantage = ({ imageSrc }: EonAdvantageProps) => {
           stagger: 0.15,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: ".advantage-text-container",
+            trigger: textContainerRef.current,
             start: "top 80%",
           },
         },
       );
-    },
-    { scope: sectionRef },
-  );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <div
@@ -53,8 +72,8 @@ const EonAdvantage = ({ imageSrc }: EonAdvantageProps) => {
       className="mt-16 grid items-end gap-10 lg:mt-24 lg:grid-cols-[1fr_1.1fr] lg:gap-24"
     >
       {/* Left Image Side */}
-      <div className="image-container relative ml-auto max-w-lg w-full">
-        <div className="overflow-hidden">
+      <div className="image-container relative ml-auto max-w-lg w-full" ref={imageContainerRef}>
+        <div className="image-reveal-wrapper overflow-hidden" ref={imageRevealRef}>
           <img
             src={imageSrc}
             alt="Event production director"
@@ -63,7 +82,7 @@ const EonAdvantage = ({ imageSrc }: EonAdvantageProps) => {
         </div>
 
         {/* Parallax Overlap Box */}
-        <div className="parallax-box absolute -bottom-7 -left-4 bg-accent px-5 py-6 text-accent-foreground sm:-left-8 shadow-2xl z-10 will-change-transform">
+        <div ref={parallaxBoxRef} className="parallax-box absolute -bottom-7 -left-4 bg-accent px-5 py-6 text-accent-foreground sm:-left-8 shadow-2xl z-10 will-change-transform">
           <Crosshair className="size-6" />
           <p className="mt-8 max-w-[130px] text-xs font-bold uppercase leading-5 tracking-[0.12em]">
             Precision at every point of execution
@@ -72,18 +91,19 @@ const EonAdvantage = ({ imageSrc }: EonAdvantageProps) => {
       </div>
 
       {/* Right Text Side */}
-      <div className="advantage-text-container pb-2">
-        <p className="advantage-reveal eyebrow text-muted-foreground text-xs uppercase tracking-widest font-bold">
+      <div className="advantage-text-container pb-2" ref={textContainerRef}>
+        <p ref={(el) => (advantageRevealRefs.current[0] = el)} className="advantage-reveal eyebrow text-muted-foreground text-xs uppercase tracking-widest font-bold">
           The Eon Advantage
         </p>
-        <h3 className="advantage-reveal mt-6 font-display text-4xl leading-tight sm:text-5xl">
+        <h3 ref={(el) => (advantageRevealRefs.current[1] = el)} className="advantage-reveal mt-6 font-display text-4xl sm:text-5xl">
           Strategic enough for the boardroom. Precise enough for showtime.
         </h3>
-        <p className="advantage-reveal mt-7 max-w-xl leading-7 text-muted-foreground">
+        <p ref={(el) => (advantageRevealRefs.current[2] = el)} className="advantage-reveal mt-7 max-w-xl leading-7 text-muted-foreground">
           Our teams move fluently between corporate priorities and on-ground realities. That means
           fewer hand-offs, clearer accountability and work that performs beyond the moment.
         </p>
         <a
+          ref={(el) => (advantageRevealRefs.current[3] = el)}
           href="#inquiry"
           className="advantage-reveal group inline-flex items-center gap-2 mt-8 text-sm font-bold uppercase tracking-widest hover:text-accent transition-colors"
         >

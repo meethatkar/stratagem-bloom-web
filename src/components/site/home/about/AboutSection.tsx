@@ -7,6 +7,7 @@ import brandGif from "@/assets/Gifs/Idea.gif";
 import marketingGif from "@/assets/Gifs/BarGraph.gif";
 import commsGif from "@/assets/Gifs/Communication.gif";
 import advisoryGif from "@/assets/Gifs/Briefcase.gif";
+import advantageImage from "@/assets/service-management-consultancy.jpg";
 import CapabilityGrid, { CapabilityItem } from "./CapabilityGrid";
 import EonAdvantage from "./EonAdvantage";
 
@@ -30,7 +31,7 @@ const AboutSection = () => {
           <div>
             <TextReveal
               trigger="scroll"
-              className="display-heading text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] tracking-tight"
+              className="display-heading text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.15] tracking-tight"
             >
               One partner from first thought to final impact.
             </TextReveal>
@@ -46,7 +47,7 @@ const AboutSection = () => {
         <CapabilityGrid capabilities={capabilities} />
 
         {/* The Eon Advantage Image/Text Split */}
-        <EonAdvantage imageSrc="/path-to-your-production-image.jpg" />
+        <EonAdvantage imageSrc={advantageImage} />
       </div>
     </section>
   );

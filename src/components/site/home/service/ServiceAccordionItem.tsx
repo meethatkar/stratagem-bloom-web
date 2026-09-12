@@ -76,12 +76,7 @@ const ServiceAccordionItem = ({ data, isActive, onClick }: ServiceAccordionItemP
         <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-8 md:gap-16 pb-10 pt-2">
           {/* Left: Image */}
           <div className="relative w-full aspect-video md:aspect-[4/3] rounded-lg overflow-hidden bg-white/5">
-            <img
-              src={data.image}
-              alt={data.title}
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
+            <img src={data.image} alt={data.title} className="w-full h-full object-cover" />
           </div>
 
           {/* Right: Text Content */}

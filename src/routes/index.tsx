@@ -11,6 +11,7 @@ import { InquiryForm } from "@/components/site/home/inquiry-form";
 import { SiteFooter, SiteHeader } from "@/components/site/site-shell";
 import { Button } from "@/components/ui/button";
 import { MainLoaderPage } from "@/components/ui/main-loader";
+import { proofPoints } from "@/content/site-data";
 import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
 import ServicesSection from "@/components/site/home/service/ServiceSection";
