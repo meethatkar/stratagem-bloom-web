@@ -1,12 +1,12 @@
 import eventImage from "@/assets/service-event-management.jpg";
-import prImage from "@/assets/service-pr-communications.jpg";
-import brandingImage from "@/assets/service-creative-branding.jpg";
-import digitalImage from "@/assets/service-digital-marketing.jpg";
+import prImage from "@/assets/coperate-pr.png";
+import brandingImage from "@/assets/branding.webp";
+import digitalImage from "@/assets/stratergy-marketing.avif";
 import consultancyImage from "@/assets/service-management-consultancy.jpg";
-import productionImage from "@/assets/eon-production-detail.jpg";
+import productionImage from "@/assets/service-event-management.jpg";
 import realEstateImage from "@/assets/eon-real-estate.jpg";
 import aboutHero from "@/assets/eon-about-hero.jpg";
-import homeHero from "@/assets/eon-hero-event.jpg";
+import homeHero from "@/assets/eon-about-hero.jpg";
 
 export type ServiceSlug =
   | "event-management"
@@ -505,4 +505,3 @@ export const services: ServiceDetail[] = [
       "Go-to-market strategy, business development, operational planning and brand scaling frameworks from Eon Media, Bangalore.",
   },
 ];
-

@@ -1,6 +1,6 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
-import type { ServiceDetail } from "../../data/servicesData"; // Adjust path as needed
+import type { ServiceDetail } from "@/content/services-data";
 
 interface ServiceCardProps {
   data: ServiceDetail;

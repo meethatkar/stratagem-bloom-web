@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { ArrowRight } from "lucide-react";
-import HorizontalScrollTrack from "../components/services/HorizontalScrollTrack";
-import { services } from "../data/servicesData"; // Importing your exact data array
+import HorizontalScrollTrack from "./HorizontalScrollTrack";
+import { services } from "@/content/services-data";
 
 const ServicesPage = () => {
   // Update unique /services metadata

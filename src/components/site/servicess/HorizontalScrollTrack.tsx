@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import ServiceCard from "./ServiceCard";
-import type { ServiceDetail } from "../../data/servicesData";
+import type { ServiceDetail } from "@/content/services-data";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -34,8 +34,9 @@ const HorizontalScrollTrack = ({ services }: TrackProps) => {
           ease: "none",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top top", // Pins exactly when the first card enters normal vertical flow
+            start: "top 10%", // Pins exactly when the first card enters normal vertical flow
             pin: true,
+            markers: true,
             scrub: 1,
             // 1.5x multiplier slows down the scroll for a premium, heavy feel
             end: () => `+=${scrollDistance * 1.5}`,

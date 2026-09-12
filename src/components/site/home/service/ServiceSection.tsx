@@ -9,7 +9,7 @@ import ServiceAccordionItem from "./ServiceAccordionItem";
 import eventImage from "@/assets/service-event-management.jpg";
 import realEstateImage from "@/assets/eon-real-estate.jpg";
 import prImage from "@/assets/coperate-pr.png";
-import brandingImage from "@/assets/stratergy-marketing.avif";
+import brandingImage from "@/assets/branding.webp";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger, useGSAP);
