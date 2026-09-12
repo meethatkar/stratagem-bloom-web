@@ -12,8 +12,8 @@ export function HeroSection({
   revealDownRef,
   revealUpRef,
 }: {
-  revealDownRef?: React.RefObject<HTMLDivElement>;
-  revealUpRef?: React.RefObject<HTMLDivElement>;
+  revealDownRef?: React.RefObject<HTMLDivElement | null>;
+  revealUpRef?: React.RefObject<HTMLDivElement | null>;
 }) {
   const [activeTab, setActiveTab] = useState(0);
   const [isHovered, setIsHovered] = useState(false);

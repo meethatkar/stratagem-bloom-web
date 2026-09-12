@@ -15,7 +15,7 @@ export const serviceOverview: ServiceOverview[] = [
     title: "Corporate Events",
     description:
       "Conventions, conferences, exhibitions, launches, networking forums and commercial events.",
-    href: "#inquiry",
+    href: "/services#event-management",
     icon: Landmark,
   },
   {
@@ -31,7 +31,7 @@ export const serviceOverview: ServiceOverview[] = [
     title: "PR & Communications",
     description:
       "Brand reputation, media relations, corporate storytelling and stakeholder engagement.",
-    href: "#inquiry",
+    href: "/services#pr-communications",
     icon: Megaphone,
   },
   {
@@ -39,7 +39,7 @@ export const serviceOverview: ServiceOverview[] = [
     title: "Branding & Digital",
     description:
       "Brand identity, creative design, content, digital campaigns and performance marketing.",
-    href: "#inquiry",
+    href: "/services#creative-branding",
     icon: Palette,
   },
 ];
@@ -61,11 +61,14 @@ export const proofPoints = [
 ];
 
 export const serviceMenu = [
-  "Event Management & Production",
-  "Public Relations & Corporate Communications",
-  "Creative Design & Branding",
-  "Advertising & Digital Marketing",
-  "Management Consultancy & Advisory",
+  { label: "Event Management & Production", href: "/services#event-management" },
+  {
+    label: "Public Relations & Corporate Communications",
+    href: "/services#pr-communications",
+  },
+  { label: "Creative Design & Branding", href: "/services#creative-branding" },
+  { label: "Advertising & Digital Marketing", href: "/services#digital-marketing" },
+  { label: "Management Consultancy & Advisory", href: "/services#consultancy" },
 ];
 
 export const companyProfile = {
