@@ -18,7 +18,7 @@ type NavLinkType = {
 const NAV_LINKS: NavLinkType[] = [
   { label: "HOME", to: "/", desktopOnly: true },
   { label: "ABOUT US", to: "/about" },
-  { label: "SERVICES", href: "/#services", isDropdown: true },
+  { label: "SERVICES", to: "/services", isDropdown: true },
   { label: "REAL ESTATE SOLUTIONS", href: "/#real-estate", mobileClassName: "text-accent-strong" },
   { label: "CONTACT US", href: "/#inquiry" },
 ];
@@ -37,7 +37,7 @@ export function Brand({
   return <Logo size={size || variant} inverse={inverse} asLink href="/" className={className} />;
 }
 
-function NavDropdown({ inverse }: { inverse: boolean }) {
+function NavDropdown() {
   return (
     <div className="group relative">
       <button
@@ -53,16 +53,15 @@ function NavDropdown({ inverse }: { inverse: boolean }) {
         </p>
         {serviceMenu.map((item, index) => (
           <a
-            key={item}
-            href="#services"
+            key={item.href}
+            href={item.href}
             className="flex items-center justify-between border-b border-border/70 px-3 py-3 text-sm transition-colors last:border-none hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none"
           >
-            <span>{item}</span>
+            <span>{item.label}</span>
             <span className="text-xs text-accent-strong">0{index + 1}</span>
           </a>
         ))}
       </div>
-      <span className={inverse ? "text-hero-foreground" : "text-foreground"} />
     </div>
   );
 }
@@ -91,21 +90,30 @@ export function SiteHeader({ theme = "dark" }: { theme?: "light" | "dark" }) {
         <div className="flex items-center gap-10">
           <Brand size="md" inverse={theme === "dark"} />
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
-            {NAV_LINKS.filter((link) => !link.mobileOnly).map((link) => {
+            {NAV_LINKS.map((link) => {
               if (link.isDropdown)
-                return <NavDropdown key="dropdown" inverse={theme === "dark" && !scrolled} />;
+                return <NavDropdown key="dropdown" />;
 
-              const Component = link.to ? Link : "a";
-              const props = link.to ? { to: link.to } : { href: link.href };
+              if (link.to === "/" || link.to === "/about" || link.to === "/services") {
+                return (
+                  <Link
+                    key={link.label}
+                    to={link.to}
+                    className="nav-link text-sm font-medium text-current hover:opacity-70 uppercase"
+                  >
+                    {link.label}
+                  </Link>
+                );
+              }
 
               return (
-                <Component
+                <a
                   key={link.label}
+                  href={link.href}
                   className="nav-link text-sm font-medium text-current hover:opacity-70 uppercase"
-                  {...(props as Record<string, unknown>)}
                 >
                   {link.label}
-                </Component>
+                </a>
               );
             })}
           </nav>
@@ -149,18 +157,43 @@ export function SiteHeader({ theme = "dark" }: { theme?: "light" | "dark" }) {
         >
           <div className="flex flex-col gap-3">
             {NAV_LINKS.filter((link) => !link.desktopOnly).map((link) => {
-              const Component = link.to ? Link : "a";
-              const props = link.to ? { to: link.to } : { href: link.href };
+              if (link.to === "/" || link.to === "/about" || link.to === "/services") {
+                return (
+                  <div key={link.label}>
+                    <Link
+                      to={link.to}
+                      onClick={() => setOpen(false)}
+                      className={`mobile-nav-link block ${link.mobileClassName || ""}`}
+                    >
+                      {link.label}
+                    </Link>
+                    {link.isDropdown && (
+                      <div className="border-b border-border py-3 pl-4">
+                        {serviceMenu.map((item) => (
+                          <a
+                            key={item.href}
+                            href={item.href}
+                            onClick={() => setOpen(false)}
+                            className="block py-2 text-sm text-muted-foreground"
+                          >
+                            {item.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
 
               return (
-                <Component
+                <a
                   key={link.label}
+                  href={link.href}
                   onClick={() => setOpen(false)}
                   className={`mobile-nav-link ${link.mobileClassName || ""}`}
-                  {...(props as Record<string, unknown>)}
                 >
                   {link.label}
-                </Component>
+                </a>
               );
             })}
             <Button asChild variant="premium" size="lg" className="mt-5 w-full">
@@ -206,7 +239,7 @@ export function SiteFooter() {
             <h2 className="footer-title">Navigate</h2>
             <div className="footer-links">
               <Link to="/about">About Us</Link>
-              <a href="/#services">Services</a>
+              <Link to="/services">Services</Link>
               <a href="/#real-estate">Real Estate</a>
               <a href="/#inquiry">Contact Us</a>
             </div>

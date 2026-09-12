@@ -45,9 +45,11 @@ const TextReveal = forwardRef<TextRevealHandle, TextRevealProps>(
     const tlRef = useRef<gsap.core.Timeline | null>(null);
 
     useImperativeHandle(ref, () => ({
-      play: () => tlRef?.current.play(),
-      reverse: () => tlRef?.current.reverse(),
-      reset: () => tlRef?.current.reset(),
+      play: () => tlRef.current?.play(),
+      reverse: () => tlRef.current?.reverse(),
+      reset: () => {
+        tlRef.current?.pause(0);
+      },
     }));
 
     useGSAP(

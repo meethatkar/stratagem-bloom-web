@@ -17,7 +17,7 @@ export type ServiceSlug =
 
 export type ServiceDetail = {
   slug: ServiceSlug;
-  path: string;
+  anchor: string;
   number: string;
   eyebrow: string;
   title: string;
@@ -39,7 +39,7 @@ export type ServiceDetail = {
 export const services: ServiceDetail[] = [
   {
     slug: "event-management",
-    path: "/services/event-management",
+    anchor: "event-management",
     number: "01",
     eyebrow: "Live Experiences",
     title: "Event Management & Production",
@@ -137,7 +137,7 @@ export const services: ServiceDetail[] = [
   },
   {
     slug: "pr-communications",
-    path: "/services/pr-communications",
+    anchor: "pr-communications",
     number: "02",
     eyebrow: "Reputation & Narrative",
     title: "Public Relations & Corporate Communications",
@@ -229,7 +229,7 @@ export const services: ServiceDetail[] = [
   },
   {
     slug: "creative-branding",
-    path: "/services/creative-branding",
+    anchor: "creative-branding",
     number: "03",
     eyebrow: "Identity & Design",
     title: "Creative Design & Branding",
@@ -324,7 +324,7 @@ export const services: ServiceDetail[] = [
   },
   {
     slug: "digital-marketing",
-    path: "/services/digital-marketing",
+    anchor: "digital-marketing",
     number: "04",
     eyebrow: "Reach & Performance",
     title: "Advertising & Digital Marketing",
@@ -416,7 +416,7 @@ export const services: ServiceDetail[] = [
   },
   {
     slug: "management-consultancy",
-    path: "/services/management-consultancy",
+    anchor: "consultancy",
     number: "05",
     eyebrow: "Growth & Advisory",
     title: "Management Consultancy & Advisory",
@@ -506,12 +506,3 @@ export const services: ServiceDetail[] = [
   },
 ];
 
-export function getService(slug: ServiceSlug): ServiceDetail {
-  const service = services.find((item) => item.slug === slug);
-  if (!service) throw new Error(`Unknown service: ${slug}`);
-  return service;
-}
-
-export function getRelatedServices(slug: ServiceSlug): ServiceDetail[] {
-  return services.filter((item) => item.slug !== slug).slice(0, 3);
-}
