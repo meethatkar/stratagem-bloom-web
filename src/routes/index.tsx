@@ -1,10 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Crosshair, MoveUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { Reveal } from "@/components/site/reveal";
 
-import productionImage from "@/assets/eon-production-detail.jpg";
 import realEstateImage from "@/assets/eon-real-estate.jpg";
 import { HeroSection } from "@/components/site/home/hero/hero-section";
 import AboutSection from "@/components/site/home/about/AboutSection";
@@ -12,9 +11,9 @@ import { InquiryForm } from "@/components/site/home/inquiry-form";
 import { SiteFooter, SiteHeader } from "@/components/site/site-shell";
 import { Button } from "@/components/ui/button";
 import { MainLoaderPage } from "@/components/ui/main-loader";
-import { capabilities, proofPoints, serviceOverview } from "@/content/site-data";
 import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
+import ServicesSection from "@/components/site/home/service/ServiceSection";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -121,35 +120,7 @@ function Index() {
 
         <AboutSection />
 
-        <section id="services" className="section-space bg-ink text-ink-foreground">
-          <div className="site-container">
-            <Reveal>
-              <div className="grid gap-10 border-b border-ink-foreground/20 pb-12 lg:grid-cols-[.75fr_1.4fr]">
-                <SectionLabel number="02" dark>
-                  What We Do
-                </SectionLabel>
-                <h2 className="display-heading max-w-4xl">
-                  Ideas engineered to move people—and business.
-                </h2>
-              </div>
-            </Reveal>
-            <div>
-              {serviceOverview.map(({ number, title, description, href, icon: Icon }) => (
-                <Reveal key={title}>
-                  <a href={href} className="service-row group">
-                    <span className="service-number">{number}</span>
-                    <Icon className="service-icon" strokeWidth={1.25} />
-                    <h3>{title}</h3>
-                    <p>{description}</p>
-                    <span className="service-arrow">
-                      <MoveUpRight />
-                    </span>
-                  </a>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
+        <ServicesSection />
 
         <section
           id="real-estate"

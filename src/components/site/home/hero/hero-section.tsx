@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { ArrowRight } from "lucide-react";
-import eventImage from "@/assets/eon-hero-event.jpg";
-import marketingImage from "@/assets/service-digital-marketing.jpg";
-import prImage from "@/assets/service-pr-communications.jpg";
-import { HeroTabs, HERO_STEPS } from "@/components/site/home/hero/hero-tabs";
+import eventImage from "@/assets/service-event-management.jpg";
+import marketingImage from "@/assets/stratergy-marketing.avif";
+import prImage from "@/assets/coperate-pr.jpeg";
+import { HeroTabs } from "@/components/site/home/hero/hero-tabs";
 import { HeroReveal } from "@/components/ui/hero-reveal";
 import { Button } from "@/components/ui/button";
 import gsap from "gsap";
