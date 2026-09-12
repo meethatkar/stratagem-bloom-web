@@ -6,7 +6,8 @@ import aboutHero from "@/assets/eon-about-hero.jpg";
 import { Reveal } from "@/components/site/reveal";
 import { SiteFooter, SiteHeader } from "@/components/site/site-shell";
 import { Button } from "@/components/ui/button";
-import { companyProfile, leadership, missionValues } from "@/content/site-data";
+import { companyProfile, leadership, missionValues, unlockPages } from "@/content/site-data";
+import { InDevelopment } from "@/components/site/InDevelopment";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -35,6 +36,7 @@ export const Route = createFileRoute("/about")({
 });
 
 function AboutPage() {
+  if (!unlockPages) return <InDevelopment />;
   return (
     <>
       <SiteHeader />

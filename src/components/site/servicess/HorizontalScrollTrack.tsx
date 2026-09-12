@@ -39,7 +39,7 @@ const HorizontalScrollTrack = ({ services }: TrackProps) => {
             markers: true,
             scrub: 1,
             // 1.5x multiplier slows down the scroll for a premium, heavy feel
-            end: () => `+=${scrollDistance * 1.5}`,
+            end: () => `+=${scrollDistance * 1.3}`,
             anticipatePin: 1,
           },
         });

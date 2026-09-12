@@ -81,8 +81,8 @@ export function SiteHeader({ theme = "dark" }: { theme?: "light" | "dark" }) {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "border-b border-border bg-background/95 text-foreground shadow-sm backdrop-blur-xl py-0"
-          : `bg-transparent ${theme === "light" ? "text-foreground" : "text-white"} py-2`
+          ? "border-b border-border text-foreground shadow-sm py-0 bg-white"
+          : `bg-transparent ${theme === "light" ? "text-ink" : "text-white"} py-2`
       }`}
     >
       <div className="w-full px-6 sm:px-12 lg:px-16 flex h-20 items-center justify-between lg:h-24">
@@ -91,8 +91,7 @@ export function SiteHeader({ theme = "dark" }: { theme?: "light" | "dark" }) {
           <Brand size="md" inverse={theme === "dark"} />
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
             {NAV_LINKS.map((link) => {
-              if (link.isDropdown)
-                return <NavDropdown key="dropdown" />;
+              if (link.isDropdown) return <NavDropdown key="dropdown" />;
 
               if (link.to === "/" || link.to === "/about" || link.to === "/services") {
                 return (
@@ -126,7 +125,7 @@ export function SiteHeader({ theme = "dark" }: { theme?: "light" | "dark" }) {
             size="lg"
             className={`font-medium rounded-none px-6 transition-all text-xs tracking-widest uppercase ${
               scrolled || theme === "light"
-                ? "border-foreground text-foreground hover:bg-foreground hover:text-background"
+                ? "border-ink text-ink hover:bg-ink hover:text-white"
                 : "border-white text-white bg-black/20 backdrop-blur-sm hover:bg-white hover:text-black"
             }`}
           >
