@@ -11,6 +11,7 @@ export interface TextRevealProps {
   className?: string;
   trigger?: "mount" | "scroll" | "manual";
   scrollStart?: string;
+  scrollEnd?: string;
   splitBy?: "lines" | "words" | "chars";
   duration?: number;
   stagger?: number;
@@ -31,6 +32,7 @@ const TextReveal = forwardRef<TextRevealHandle, TextRevealProps>(
       className = "",
       trigger = "mount",
       scrollStart = "top 75%",
+      scrollEnd = "bottom 25%",
       splitBy = "lines",
       duration = 0.67,
       stagger = 0.085,
@@ -67,7 +69,13 @@ const TextReveal = forwardRef<TextRevealHandle, TextRevealProps>(
           });
 
           // Ensure the outer wrapper has overflow hidden to act as a mask
-          gsap.set(outerSplit.lines, { overflow: "hidden" });
+          gsap.set(outerSplit.lines, { 
+            overflow: "hidden",
+            paddingBottom: "0.2em",
+            marginBottom: "-0.2em",
+            paddingTop: "0.1em",
+            marginTop: "-0.1em"
+          });
 
           splitRef.current = {
             revert: () => {
@@ -112,8 +120,10 @@ const TextReveal = forwardRef<TextRevealHandle, TextRevealProps>(
           ScrollTrigger.create({
             trigger: wrapperRef.current,
             start: scrollStart,
+            end: scrollEnd,
             once: true,
             onEnter: () => tlRef.current?.play(),
+            markers: false,
           });
         }
 
@@ -124,7 +134,7 @@ const TextReveal = forwardRef<TextRevealHandle, TextRevealProps>(
       },
       {
         scope: wrapperRef,
-        dependencies: [trigger, splitBy, delay, scrollStart, duration, stagger, ease],
+        dependencies: [trigger, splitBy, delay, scrollStart, scrollEnd, duration, stagger, ease],
       },
     );
 

@@ -14,8 +14,10 @@ import { MainLoaderPage } from "@/components/ui/main-loader";
 import { proofPoints } from "@/content/site-data";
 import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+if (typeof window !== "undefined") gsap.registerPlugin(ScrollTrigger);
 import ServicesSection from "@/components/site/home/service/ServiceSection";
-
+import FeaturesSection from "@/components/site/home/features/FeaturesSection";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -74,6 +76,10 @@ function Index() {
         const tl = gsap.timeline({
           onComplete: () => {
             setShowLoader(false);
+            // Refresh ScrollTrigger after React unmounts the loader from the DOM
+            setTimeout(() => {
+              ScrollTrigger.refresh();
+            }, 100);
           },
         });
 
@@ -166,38 +172,7 @@ function Index() {
           </div>
         </section>
 
-        <section className="section-space bg-background">
-          <div className="site-container">
-            <Reveal>
-              <div className="grid gap-10 lg:grid-cols-[.78fr_1.35fr] lg:gap-24">
-                <SectionLabel number="03">Why Eon Media</SectionLabel>
-                <div>
-                  <h2 className="display-heading">
-                    The confidence to think bigger. The discipline to deliver.
-                  </h2>
-                  <p className="mt-8 max-w-2xl leading-7 text-muted-foreground">
-                    Every engagement is shaped by operational excellence, production precision,
-                    creative distinction, strategic thinking and a clear focus on client ROI.
-                  </p>
-                </div>
-              </div>
-            </Reveal>
-            <Reveal>
-              <div className="mt-16 grid border-y border-l border-border sm:grid-cols-2 lg:mt-24 lg:grid-cols-4">
-                {proofPoints.map((point) => (
-                  <div key={point.value} className="proof-point">
-                    <strong>{point.value}</strong>
-                    <span>{point.label}</span>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-4 text-xs text-muted-foreground">
-                Capability indicators shown above are descriptive placeholders pending verified
-                company statistics.
-              </p>
-            </Reveal>
-          </div>
-        </section>
+        <FeaturesSection />
 
         <section id="inquiry" className="section-space bg-secondary">
           <div className="site-container grid gap-14 lg:grid-cols-[.8fr_1.2fr] lg:gap-24">

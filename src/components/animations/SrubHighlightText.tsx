@@ -11,9 +11,16 @@ if (typeof window !== "undefined") {
 export interface ScrubHighlightTextProps {
   text: string;
   className?: string;
+  scrollStart?: string;
+  scrollEnd?: string;
 }
 
-const ScrubHighlightText = ({ text, className = "" }: ScrubHighlightTextProps) => {
+const ScrubHighlightText = ({
+  text,
+  className = "",
+  scrollStart = "top 85%",
+  scrollEnd = "bottom 60%",
+}: ScrubHighlightTextProps) => {
   const containerRef = useRef<HTMLParagraphElement>(null);
   const words = text.split(" ");
 
@@ -21,17 +28,18 @@ const ScrubHighlightText = ({ text, className = "" }: ScrubHighlightTextProps) =
     () => {
       // We start with dimmed text and scrub it to full color
       gsap.to(".scrub-word", {
-        color: "var(--foreground, #111827)", // Animates to your active text color
+        color: "#645C55", // Animates to your active text color
         stagger: 0.2,
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 85%",
-          end: "bottom 60%",
+          start: scrollStart,
+          end: scrollEnd,
           scrub: 0.5, // 0.5s smoothing delay as requested
+          markers: true,
         },
       });
     },
-    { scope: containerRef },
+    { scope: containerRef, dependencies: [scrollStart, scrollEnd] },
   );
 
   return (

@@ -82,7 +82,10 @@ const EonAdvantage = ({ imageSrc }: EonAdvantageProps) => {
         </div>
 
         {/* Parallax Overlap Box */}
-        <div ref={parallaxBoxRef} className="parallax-box absolute -bottom-7 -left-4 bg-accent px-5 py-6 text-accent-foreground sm:-left-8 shadow-2xl z-10 will-change-transform">
+        <div
+          ref={parallaxBoxRef}
+          className="parallax-box absolute -bottom-7 -left-4 bg-accent px-5 py-6 text-accent-foreground sm:-left-8 shadow-2xl z-10 will-change-transform"
+        >
           <Crosshair className="size-6" />
           <p className="mt-8 max-w-[130px] text-xs font-bold uppercase leading-5 tracking-[0.12em]">
             Precision at every point of execution
@@ -92,13 +95,28 @@ const EonAdvantage = ({ imageSrc }: EonAdvantageProps) => {
 
       {/* Right Text Side */}
       <div className="advantage-text-container pb-2" ref={textContainerRef}>
-        <p ref={(el) => (advantageRevealRefs.current[0] = el)} className="advantage-reveal eyebrow text-muted-foreground text-xs uppercase tracking-widest font-bold">
+        <p
+          ref={(el) => {
+            advantageRevealRefs.current[0] = el;
+          }}
+          className="advantage-reveal eyebrow text-muted-foreground text-xs uppercase tracking-widest font-bold"
+        >
           The Eon Advantage
         </p>
-        <h3 ref={(el) => (advantageRevealRefs.current[1] = el)} className="advantage-reveal mt-6 font-display text-4xl sm:text-5xl">
+        <h3
+          ref={(el) => {
+            advantageRevealRefs.current[1] = el;
+          }}
+          className="advantage-reveal mt-6 font-display text-4xl sm:text-5xl"
+        >
           Strategic enough for the boardroom. Precise enough for showtime.
         </h3>
-        <p ref={(el) => (advantageRevealRefs.current[2] = el)} className="advantage-reveal mt-7 max-w-xl leading-7 text-muted-foreground">
+        <p
+          ref={(el) => {
+            advantageRevealRefs.current[2] = el;
+          }}
+          className="advantage-reveal mt-7 max-w-xl leading-7 text-muted-foreground"
+        >
           Our teams move fluently between corporate priorities and on-ground realities. That means
           fewer hand-offs, clearer accountability and work that performs beyond the moment.
         </p>
