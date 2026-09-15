@@ -248,7 +248,6 @@ export function SiteFooter() {
             <div className="footer-links">
               <a href="mailto:sales@eonmedia.co.in">sales@eonmedia.co.in</a>
               <a href="mailto:marketing@eonmedia.co.in">marketing@eonmedia.co.in</a>
-              <a href="tel:+918433857555">+91 84338 57555</a>
             </div>
           </div>
           <div>

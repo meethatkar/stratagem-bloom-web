@@ -35,7 +35,7 @@ const ScrubHighlightText = ({
           start: scrollStart,
           end: scrollEnd,
           scrub: 0.5, // 0.5s smoothing delay as requested
-          markers: true,
+          // markers: true,
         },
       });
     },

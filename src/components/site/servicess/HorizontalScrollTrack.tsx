@@ -36,7 +36,7 @@ const HorizontalScrollTrack = ({ services }: TrackProps) => {
             trigger: containerRef.current,
             start: "top 10%", // Pins exactly when the first card enters normal vertical flow
             pin: true,
-            markers: true,
+            // markers: true,
             scrub: 1,
             // 1.5x multiplier slows down the scroll for a premium, heavy feel
             end: () => `+=${scrollDistance * 1.3}`,
