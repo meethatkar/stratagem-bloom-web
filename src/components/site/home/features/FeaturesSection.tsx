@@ -12,7 +12,12 @@ const FeaturesSection = () => {
         <div className="grid gap-10 lg:grid-cols-[.78fr_1.35fr] lg:gap-24">
           <SectionLabel number="03">Why Eon Media</SectionLabel>
           <div>
-            <TextReveal trigger="scroll" className="display-heading" scrollStart="top 80%">
+            <TextReveal
+              trigger="scroll"
+              className="display-heading"
+              scrollStart="top 80%"
+              scrollEnd="top 50%"
+            >
               The confidence to think bigger. The discipline to deliver.
             </TextReveal>
             <ScrubHighlightText

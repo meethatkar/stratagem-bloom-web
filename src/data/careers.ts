@@ -1,0 +1,42 @@
+export const jobsData = [
+  {
+    id: "job-01",
+    title: "Senior Sales Manager",
+    department: "Sales",
+    location: "Mumbai, Maharashtra",
+    employmentType: "FULL_TIME",
+    datePosted: "2026-09-10",
+    description: "Lead the sales strategy for our upcoming premium residential projects in the Western Suburbs. You will manage channel partners, drive direct sales, and oversee a team of executives.",
+    requirements: ["7+ years of Mumbai real estate experience", "Strong network of channel partners", "Proven track record in luxury residential sales"],
+  },
+  {
+    id: "job-02",
+    title: "Project Engineer (Civil)",
+    department: "Operations",
+    location: "Borivali West, Mumbai",
+    employmentType: "FULL_TIME",
+    datePosted: "2026-09-12",
+    description: "Ensure quality, safety, and timely execution on-site for our flagship redevelopment projects. Coordinate with architects, contractors, and local authorities.",
+    requirements: ["B.E. / B.Tech in Civil Engineering", "5+ years experience in high-rise residential construction", "Strong understanding of safety protocols"],
+  },
+  {
+    id: "job-03",
+    title: "Content Writer",
+    department: "Marketing",
+    location: "Andheri West, Mumbai",
+    employmentType: "FULL_TIME",
+    datePosted: "2026-09-15",
+    description: "Lorem ipsum dolor sit amet consectetur. Id sit non consequat rhoncus gravida fermentum ut posuere mollis. Cursus sed orci quam faucibus amet eros imperdiet. Enim duis sed ut neque.",
+    requirements: ["Exceptional writing and editing skills", "Experience in real estate or luxury brand storytelling", "SEO knowledge"],
+  },
+  {
+    id: "job-04",
+    title: "Social Media Manager",
+    department: "Marketing",
+    location: "Mumbai, Maharashtra",
+    employmentType: "FULL_TIME",
+    datePosted: "2026-09-16",
+    description: "Lorem ipsum dolor sit amet consectetur. Id sit non consequat rhoncus gravida fermentum ut posuere mollis. Cursus sed orci quam faucibus amet eros imperdiet. Enim duis sed ut neque aliquet ac donec vel sodales.",
+    requirements: ["3+ years managing corporate social accounts", "Experience with paid performance marketing", "Creative mindset for campaign ideation"],
+  }
+];

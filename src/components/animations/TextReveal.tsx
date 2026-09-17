@@ -69,12 +69,12 @@ const TextReveal = forwardRef<TextRevealHandle, TextRevealProps>(
           });
 
           // Ensure the outer wrapper has overflow hidden to act as a mask
-          gsap.set(outerSplit.lines, { 
+          gsap.set(outerSplit.lines, {
             overflow: "hidden",
             paddingBottom: "0.2em",
             marginBottom: "-0.2em",
             paddingTop: "0.1em",
-            marginTop: "-0.1em"
+            marginTop: "-0.1em",
           });
 
           splitRef.current = {
@@ -116,14 +116,15 @@ const TextReveal = forwardRef<TextRevealHandle, TextRevealProps>(
           tlRef.current.play();
         }
 
-        if (trigger === "scroll") {
+        if (trigger === "scroll" && tlRef.current) {
           ScrollTrigger.create({
             trigger: wrapperRef.current,
             start: scrollStart,
             end: scrollEnd,
+            animation: tlRef.current,
+            scrub: true,
             once: true,
-            onEnter: () => tlRef.current?.play(),
-            markers: false,
+            markers: true,
           });
         }
 

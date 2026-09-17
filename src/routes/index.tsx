@@ -4,7 +4,6 @@ import type { ReactNode } from "react";
 
 import { Reveal } from "@/components/site/reveal";
 
-import realEstateImage from "@/assets/eon-real-estate.jpg";
 import { HeroSection } from "@/components/site/home/hero/hero-section";
 import AboutSection from "@/components/site/home/about/AboutSection";
 import { InquiryForm } from "@/components/site/home/inquiry-form";
@@ -18,6 +17,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 if (typeof window !== "undefined") gsap.registerPlugin(ScrollTrigger);
 import ServicesSection from "@/components/site/home/service/ServiceSection";
 import FeaturesSection from "@/components/site/home/features/FeaturesSection";
+import RealEstateSection from "@/components/site/home/real-estate/RealEstateSection";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -129,48 +129,7 @@ function Index() {
 
         <ServicesSection />
 
-        <section
-          id="real-estate"
-          className="relative min-h-[760px] overflow-hidden bg-ink text-hero-foreground lg:min-h-[900px]"
-        >
-          <img
-            src={realEstateImage}
-            alt="A premium residential project launch and investor showcase at dusk"
-            width={1920}
-            height={1280}
-            loading="lazy"
-            className="absolute inset-0 size-full object-cover transition-transform duration-1000 hover:scale-[1.02]"
-          />
-          <div className="absolute inset-0 bg-realestate-overlay" />
-          <div className="site-container relative z-10 flex min-h-[760px] flex-col justify-between py-20 lg:min-h-[900px] lg:py-28">
-            <Reveal>
-              <div className="flex items-center gap-3">
-                <span className="h-px w-12 bg-accent" />
-                <p className="eyebrow text-hero-foreground">A Dedicated Business Vertical</p>
-              </div>
-            </Reveal>
-            <Reveal>
-              <div className="max-w-4xl">
-                <p className="font-display text-2xl italic text-accent">Built for real estate.</p>
-                <h2 className="mt-4 font-display text-6xl leading-[.96] sm:text-7xl lg:text-8xl">
-                  From project vision to market momentum.
-                </h2>
-                <div className="mt-9 grid gap-8 border-t border-hero-foreground/30 pt-7 md:grid-cols-[1fr_auto] md:items-end">
-                  <p className="max-w-xl leading-7 text-hero-muted">
-                    Launch campaigns, channel partner meets, investor showcases, property expos and
-                    immersive experience centres—designed around the realities of property
-                    marketing.
-                  </p>
-                  <Button asChild variant="hero" size="xl">
-                    <a href="#inquiry">
-                      Explore Real Estate Solutions <ArrowRight />
-                    </a>
-                  </Button>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </section>
+        <RealEstateSection />
 
         <FeaturesSection />
 

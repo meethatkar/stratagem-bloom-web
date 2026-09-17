@@ -31,6 +31,8 @@ const AboutSection = () => {
           <div>
             <TextReveal
               trigger="scroll"
+              scrollStart="top 80%"
+              scrollEnd="top 50%"
               className="display-heading text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.15] tracking-tight"
             >
               One partner from first thought to final impact.

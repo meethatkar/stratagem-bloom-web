@@ -13,6 +13,7 @@ export interface ScrubHighlightTextProps {
   className?: string;
   scrollStart?: string;
   scrollEnd?: string;
+  activeColor?: string;
 }
 
 const ScrubHighlightText = ({
@@ -20,6 +21,7 @@ const ScrubHighlightText = ({
   className = "",
   scrollStart = "top 85%",
   scrollEnd = "bottom 60%",
+  activeColor = "#645C55",
 }: ScrubHighlightTextProps) => {
   const containerRef = useRef<HTMLParagraphElement>(null);
   const words = text.split(" ");
@@ -28,7 +30,7 @@ const ScrubHighlightText = ({
     () => {
       // We start with dimmed text and scrub it to full color
       gsap.to(".scrub-word", {
-        color: "#645C55", // Animates to your active text color
+        color: activeColor, // Animates to your active text color
         stagger: 0.2,
         scrollTrigger: {
           trigger: containerRef.current,
@@ -39,7 +41,7 @@ const ScrubHighlightText = ({
         },
       });
     },
-    { scope: containerRef, dependencies: [scrollStart, scrollEnd] },
+    { scope: containerRef, dependencies: [scrollStart, scrollEnd, activeColor] },
   );
 
   return (
