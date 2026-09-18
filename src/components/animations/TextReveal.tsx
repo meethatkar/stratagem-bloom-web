@@ -17,6 +17,7 @@ export interface TextRevealProps {
   stagger?: number;
   delay?: number;
   ease?: string;
+  clipPadding?: string;
 }
 
 export interface TextRevealHandle {
@@ -38,6 +39,7 @@ const TextReveal = forwardRef<TextRevealHandle, TextRevealProps>(
       stagger = 0.085,
       delay = 0,
       ease = "power1.in",
+      clipPadding = "0.3em",
     },
     ref,
   ) => {
@@ -71,8 +73,8 @@ const TextReveal = forwardRef<TextRevealHandle, TextRevealProps>(
           // Ensure the outer wrapper has overflow hidden to act as a mask
           gsap.set(outerSplit.lines, {
             overflow: "hidden",
-            paddingBottom: "0.2em",
-            marginBottom: "-0.2em",
+            paddingBottom: clipPadding,
+            marginBottom: `-${clipPadding}`,
             paddingTop: "0.1em",
             marginTop: "-0.1em",
           });
@@ -135,12 +137,25 @@ const TextReveal = forwardRef<TextRevealHandle, TextRevealProps>(
       },
       {
         scope: wrapperRef,
-        dependencies: [trigger, splitBy, delay, scrollStart, scrollEnd, duration, stagger, ease],
+        dependencies: [
+          trigger,
+          splitBy,
+          delay,
+          scrollStart,
+          scrollEnd,
+          duration,
+          stagger,
+          ease,
+          clipPadding,
+        ],
       },
     );
 
     return (
-      <div ref={wrapperRef} className={`overflow-hidden ${className}`}>
+      <div
+        ref={wrapperRef}
+        className={`${splitBy !== "lines" ? "overflow-hidden" : ""} ${className}`}
+      >
         {children}
       </div>
     );

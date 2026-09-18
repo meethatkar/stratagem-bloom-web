@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { ArrowRight } from "lucide-react";
-import HorizontalScrollTrack from "./HorizontalScrollTrack";
+import ServiceShowcase from "@/components/animations/listHoverImage/ServiceShowcase";
 import { services } from "@/content/services-data";
 
 const ServicesPage = () => {
@@ -53,7 +53,19 @@ const ServicesPage = () => {
       </section>
 
       {/* 2. THE IMMERSIVE HORIZONTAL SEQUENCE */}
-      <HorizontalScrollTrack services={services} />
+      <ServiceShowcase
+        className="px-6 lg:px-24 pb-32"
+        items={services.map((s) => ({
+          id: s.slug,
+          title: s.title,
+          number: s.number,
+          description: s.shortDescription,
+          image: (s.heroImage as any)?.src || s.heroImage,
+          imageAlt: s.heroAlt,
+          capabilities: s.capabilities,
+          cta: { label: s.cta.label, href: s.cta.href },
+        }))}
+      />
 
       {/* 3. DUAL-ACTION CLOSING SECTION */}
       <section className="w-full bg-[#121212] text-white py-32 px-6 lg:px-24 flex flex-col items-center text-center">
