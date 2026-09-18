@@ -1,6 +1,7 @@
 import { Reveal } from "@/components/site/reveal";
 import { leadership } from "@/content/site-data";
 import { SectionLabel } from "./SectionLabel";
+import ScrubHighlightText from "@/components/animations/SrubHighlightText";
 
 export const LeadershipSection = () => {
   return (
@@ -23,9 +24,11 @@ export const LeadershipSection = () => {
             </div>
             <div className="flex flex-col justify-center">
               <SectionLabel number="02">Leadership</SectionLabel>
-              <blockquote className="mt-8 font-display text-3xl leading-tight sm:text-4xl lg:text-5xl">
-                “{leadership.message}”
-              </blockquote>
+              <ScrubHighlightText
+                text={`“${leadership.message}”`}
+                className="mt-8 font-display text-3xl leading-tight sm:text-4xl lg:text-5xl"
+                activeColor="#1c1917"
+              />
               <div className="mt-10 grid gap-4 sm:grid-cols-2">
                 {leadership.themes.map((theme) => (
                   <div

@@ -132,26 +132,41 @@ export const leadership = {
   ],
 };
 
+import disciplineGif from "@/assets/Gifs/Discipline_converted.gif";
+import workflowGif from "@/assets/Gifs/Workflow_converted.gif";
+import lcdProductionGif from "@/assets/Gifs/Lcd Production_converted.gif";
+import ideaGif from "@/assets/Gifs/Idea.gif";
+import growthAnalysisGif from "@/assets/Gifs/Growth Analysis_converted.gif";
+
 export const missionValues = {
   headline: "Built on discipline. Driven by impact.",
+  headlineImage: disciplineGif,
   values: [
     {
       title: "Operational Excellence",
       description:
         "Every process, partner and timeline is managed to remove friction and protect quality.",
+      image: workflowGif,
+      imageStyle: "right-center large",
     },
     {
       title: "Seamless Production",
       description:
         "We design experiences where the audience sees only the idea, never the complexity behind it.",
+      image: lcdProductionGif,
+      imageStyle: "bottom-right small",
     },
     {
       title: "Creative Distinction",
       description: "Work that is recognisably better—clearer, more beautiful and more memorable.",
+      image: ideaGif,
+      imageStyle: "right-center medium",
     },
     {
       title: "Client ROI",
       description: "Creativity and production must ultimately return measurable business value.",
+      image: growthAnalysisGif,
+      imageStyle: "bottom-right small",
     },
   ],
 };
