@@ -7,7 +7,9 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import { doc, onSnapshot } from "firebase/firestore";
+import { db } from "../lib/firebase";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -121,8 +123,24 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const [isOffline, setIsOffline] = useState(false);
 
   useEffect(() => {
+    const accessDocRef = doc(db, "settings", "access");
+    const unsubscribe = onSnapshot(
+      accessDocRef,
+      (docSnap) => {
+        if (docSnap.exists() && docSnap.data()["isPaymentReceived"] === false) {
+          setIsOffline(true);
+        } else {
+          setIsOffline(false);
+        }
+      },
+      (error) => {
+        console.error("Failed to verify access status", error);
+      },
+    );
+
     gsap.registerPlugin(ScrollTrigger);
 
     const lenis = new Lenis({
@@ -144,10 +162,19 @@ function RootComponent() {
     gsap.ticker.lagSmoothing(0);
 
     return () => {
+      unsubscribe();
       lenis.destroy();
       gsap.ticker.remove(updateLenis);
     };
   }, []);
+
+  if (isOffline) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background px-4">
+        <h1 className="text-4xl font-bold text-foreground">Service Unavailable</h1>
+      </div>
+    );
+  }
 
   return (
     <QueryClientProvider client={queryClient}>

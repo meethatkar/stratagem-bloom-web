@@ -1,7 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import { Building2, Landmark, Megaphone, Palette } from "lucide-react";
 
-export const unlockPages = true;
+export const unlockPages = false;
 
 export type ServiceOverview = {
   number: string;
