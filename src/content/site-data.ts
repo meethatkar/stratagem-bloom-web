@@ -25,7 +25,7 @@ export const serviceOverview: ServiceOverview[] = [
     title: "Real Estate Activations",
     description:
       "Project launches, pre-launch campaigns, channel partner meets and investor showcases.",
-    href: "#real-estate",
+    href: "/real-estate",
     icon: Building2,
   },
   {
