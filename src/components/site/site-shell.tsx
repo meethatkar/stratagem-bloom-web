@@ -19,7 +19,7 @@ const NAV_LINKS: NavLinkType[] = [
   { label: "HOME", to: "/", desktopOnly: true },
   { label: "ABOUT US", to: "/about" },
   { label: "SERVICES", to: "/services", isDropdown: true },
-  { label: "REAL ESTATE SOLUTIONS", href: "/#real-estate", mobileClassName: "text-accent-strong" },
+  { label: "REAL ESTATE SOLUTIONS", to: "/real-estate", mobileClassName: "text-accent-strong" },
   { label: "CONTACT US", href: "/#inquiry" },
 ];
 
@@ -93,7 +93,7 @@ export function SiteHeader({ theme = "dark" }: { theme?: "light" | "dark" }) {
             {NAV_LINKS.map((link) => {
               if (link.isDropdown) return <NavDropdown key="dropdown" />;
 
-              if (link.to === "/" || link.to === "/about" || link.to === "/services") {
+              if (link.to === "/" || link.to === "/about" || link.to === "/services" || link.to === "/real-estate") {
                 return (
                   <Link
                     key={link.label}
@@ -156,7 +156,7 @@ export function SiteHeader({ theme = "dark" }: { theme?: "light" | "dark" }) {
         >
           <div className="flex flex-col gap-3">
             {NAV_LINKS.filter((link) => !link.desktopOnly).map((link) => {
-              if (link.to === "/" || link.to === "/about" || link.to === "/services") {
+              if (link.to === "/" || link.to === "/about" || link.to === "/services" || link.to === "/real-estate") {
                 return (
                   <div key={link.label}>
                     <Link
@@ -239,7 +239,7 @@ export function SiteFooter() {
             <div className="footer-links">
               <Link to="/about">About Us</Link>
               <Link to="/services">Services</Link>
-              <a href="/#real-estate">Real Estate</a>
+              <Link to="/real-estate">Real Estate</Link>
               <a href="/#inquiry">Contact Us</a>
             </div>
           </div>
