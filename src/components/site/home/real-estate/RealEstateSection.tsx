@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/site/reveal";
 import { Button } from "@/components/ui/button";
@@ -46,9 +47,9 @@ export default function RealEstateSection() {
                 activeColor="#EBEBEB"
               />
               <Button asChild variant="hero" size="xl">
-                <a href="#inquiry">
+                <Link to="/real-estate">
                   Explore Real Estate Solutions <ArrowRight />
-                </a>
+                </Link>
               </Button>
             </div>
           </div>
